@@ -1,5 +1,8 @@
 ## [Overview](#overview)
 _<What changed? Why?>_
 
-## [Tickets](#tickets)
+## [YouTrack Ticket](#tickets)
 - https://eulogy-quest.youtrack.cloud/issue/EUL_ISSUE_NUMBER
+
+## [Github Issue](#issues)
+- https://github.com/UNLV-CS472-672/2025-S-GROUP4-EulogyQuest/issues/ISSUE_NUMBER
