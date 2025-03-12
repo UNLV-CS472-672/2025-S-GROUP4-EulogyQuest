@@ -5,4 +5,4 @@ _<What changed? Why?>_
 - https://eulogy-quest.youtrack.cloud/issue/EUL_ISSUENUMBER
 
 ## [Github Issue](#issues)
-- https://github.com/UNLV-CS472-672/2025-S-GROUP4-EulogyQuest/issues/ISSUE_NUMBER
+- https://github.com/UNLV-CS472-672/2025-S-GROUP4-EulogyQuest/issues/ISSUENUMBER
