@@ -3,7 +3,7 @@
 **New work for the day? Create+checkout a new branch. Commit. PR. PR accepted? Delete your branch.**
 Developers on Group 4: Add your names below (comma delimited).
 
-Ken Harvey, yourName,
+Ken Harvey, Richard Varagson, yourName
 
 # AkkStack | Containerized EverQuest Emulator Server Environment
 
