@@ -1,5 +1,5 @@
 data/
-server/
+server/**
 code/
 .idea/
 .env
@@ -9,24 +9,17 @@ code/
 .bash_history
 assets/ssh/
 
-## Eulogy-quest server/quests/<zone>/<NPC>.pl whitelist
-##   All NPCs whose behavior is soon to be edited, 
-##   add them to this whitelist first!
-
-# Un-ignore the quests/ directory (but not its contents yet)
-# ((git issue #6))
-#
-## // ai-gen start (ChatGPT-4o, 0)
-!server/quests/    
-## // ai-gen end
-
-# Explicitly track only these specific files:
-#
-## // ai-gen start (ChatGPT-4o, 0)
-!server/quests/tutorialb/Vahlara.pl    
+## // ai-gen start (ChatGPT-4o, 1)
+!server/quests/**
 ## // ai-gen end
 #
-# (Eulogy-quest team, add your NPCs to the whitelist below)
-# (no need to copy the ai-gen part if you're instead copying me)
-# <whitelist>:
-# !server/quests/<zone>/<your_NPC>.pl
+## All quest files CAN be added, but are default-ignored.
+##  To track a changed NPC.pl file, you don't have to do 
+##  anything here.
+##  Instead, to begin tracking an NPC file you intend to change,
+##  on the command line: run `git add -f server/quest/zoneABC/npcBob.pl`
+##  This stages the file (the next thing you'd do is commit).
+## Furthermore, you'll want to make sure that you've deleted
+##  the server/quests/.git directory
+##  `rm -rf server/quests/.git`
+
