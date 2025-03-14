@@ -1,5 +1,5 @@
 data/
-server/
+server/**
 code/
 .idea/
 .env
@@ -16,14 +16,14 @@ assets/ssh/
 # Un-ignore the quests/ directory (but not its contents yet)
 # ((git issue #6))
 #
-## // ai-gen start (ChatGPT-4o, 0)
-!server/quests/    
+## // ai-gen start (ChatGPT-4o, 1)
+!server/quests/**
 ## // ai-gen end
 
 # Explicitly track only these specific files:
 #
 ## // ai-gen start (ChatGPT-4o, 0)
-!server/quests/tutorialb/Vahlara.pl    
+#!server/quests/tutorialb/Vahlara.pl    
 ## // ai-gen end
 #
 # (Eulogy-quest team, add your NPCs to the whitelist below)
