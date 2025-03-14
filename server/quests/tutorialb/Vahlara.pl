@@ -32,7 +32,7 @@ sub EVENT_SAY {
     if (quest::istaskactivityactive(3785, 1)) {
       quest::updatetaskactivity(3785, 1);
     }
-    quest::say("I'm glad you managed to escape the slave warrens in one piece.  There are many [" . quest::saylink("others") . "] who were not as lucky.  Here, take this armor we found on a kobold.  It's not much but it should keep you safe.");
+    quest::say("I'm glad you managed to escape the slave warrens in one piece.  There are many [" . quest::saylink("others") . "] who were not as lucky.  Here, take this armor we found on a kobold.  It's not much but it should keep you safe. So far our [" . quest::saylink("heroes") . "] have done well.");
     quest::popup("Equipping Armor", "<br>Vahlara has offered you a piece of kobold armor to keep you safe.<br><br>Equip the armor by dropping it onto the large rectangular icon in the center of your inventory ( <c \"#00F0F0\">i</c> ) window.  Notice that the armor automatically moves to its proper armor slot on your body.<br><br>Also note that some armor you will later obtain can only be equipped by placing it directly in its corresponding slot, e.g. dropping a breastplate onto the \"chest\" icon in your inventory. When you do this, the armor becomes \"attuned\" to your character, and you will no longer be able to trade it with other players.<br><br><c \"#F07F00\">Once you have equipped the armor, respond to Vahlara's dialogue in your Main Chat Window to continue.</c>");
   }
   if ($text=~/others/i) {
@@ -44,6 +44,9 @@ sub EVENT_SAY {
   }
   if ($text=~/bandages/i) {
     quest::say("I was a skilled tailor before I was enslaved, so I'm able to weave spiderling silk into makeshift gauzes and dressings.  But now even the spiderling silk is running scarce.  If you can bring me a piece of spiderling silk, I can give you some armor I've crafted from burlap. Burlap's no good for bandages anyway.");
+  }
+  if ($text=~/heroes/i) {
+    quest::say("Many thanks to our heroes: Kharvey, .");
   }
 }
 
@@ -57,4 +60,3 @@ sub EVENT_ITEM {
   }
   plugin::return_items(\%itemcount);
 }
-# Eulogy-quest edited file (13)
