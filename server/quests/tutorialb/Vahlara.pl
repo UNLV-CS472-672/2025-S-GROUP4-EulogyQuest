@@ -46,7 +46,7 @@ sub EVENT_SAY {
     quest::say("I was a skilled tailor before I was enslaved, so I'm able to weave spiderling silk into makeshift gauzes and dressings.  But now even the spiderling silk is running scarce.  If you can bring me a piece of spiderling silk, I can give you some armor I've crafted from burlap. Burlap's no good for bandages anyway.");
   }
   if ($text=~/heroes/i) {
-    quest::say("Many thanks to our heroes: Kharvey, JohnZ, Kirchand, Parham Pahlavan, .");
+    quest::say("Many thanks to our heroes: Kharvey, JohnZ, Kirchand, Hardy, Parham Pahlavan, .");
   }
 }
 
