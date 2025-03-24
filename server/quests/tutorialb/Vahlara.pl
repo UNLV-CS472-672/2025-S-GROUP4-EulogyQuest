@@ -12,6 +12,7 @@ sub EVENT_SPAWN {
 
 sub EVENT_SAY {
   if ($text=~/hail/i) {
+    quest::say("Greetings Kemoshu, Time to start on the project");
     if (quest::istaskactivityactive(1448, 2)) {
       if ($class eq "Berserker" || $class eq "Rogue" || $class eq "Shaman" || $class eq "Ranger") {
         quest::summonitem(67111); # Item: Gloomingdeep Kobold Chain Sleeves
