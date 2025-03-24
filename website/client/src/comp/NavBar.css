@@ -1,0 +1,43 @@
+/* NavBar.css */
+
+
+body {
+    margin: 0;
+    font-family: sans-serif, Verdana;
+}
+
+.navbar {
+    overflow: hidden;
+    background: linear-gradient(to right, #C9A03B, #956701,  #026aab, #2b99de, #FFFFFF);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1000;
+    align-items: center;
+}
+
+.navbar a {
+    display: inline-flex;
+    align-items: center;
+    color: #005d96;
+    background: linear-gradient(to bottom, #cfcfcf ,#ffffff, #cfcfcf);
+    border: 5px solid #000000; 
+    text-align: center;
+    padding: 0px 25px;
+    text-decoration: none;
+    font-size: 40px;
+    height: 75px;
+    font-weight : bold;
+    box-sizing: border-box;
+    
+}
+.navbar a:not(:first-child) {
+    margin-left: 15px;
+}
+
+.navbar a:hover {
+    background: linear-gradient(to bottom, #a8a8a8 ,#d2d2d2, #a8a8a8);
+    color: #0074bd;
+    border: 5px solid #000000; 
+}
