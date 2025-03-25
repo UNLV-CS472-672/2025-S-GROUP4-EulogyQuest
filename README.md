@@ -4,7 +4,7 @@
 Developers on Group 4: Add your names below (comma delimited).
 
 
-Ken Harvey, Richard Varagson, John Zaleschuk, Jayson Kirchand-Patel, Hardy Fenam, Adam Hamou, Parham Pahlavan, yourName
+Ken Harvey, Richard Varagson, John Zaleschuk, Jayson Kirchand-Patel, Hardy Fenam, Adam Hamou, Parham Pahlavan, Michael Soffer
 
 
 # AkkStack | Containerized EverQuest Emulator Server Environment
