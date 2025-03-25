@@ -3,11 +3,7 @@
 **New work for the day? Create+checkout a new branch. Commit. PR. PR accepted? Delete your branch.**
 Developers on Group 4: Add your names below (comma delimited).
 
-
-
-Ken Harvey, Richard Varagson, John Zaleschuk, Jayson Kirchand-Patel, Hardy Fenam, Adam Hamou, Parham Pahlavan, Kevin Ramos ,yourName
-
-
+Ken Harvey, Richard Varagson, John Zaleschuk, Jayson Kirchand-Patel, Hardy Fenam, Adam Hamou, Parham Pahlavan, Kevin Ramos, yourName
 
 # AkkStack | Containerized EverQuest Emulator Server Environment
 
