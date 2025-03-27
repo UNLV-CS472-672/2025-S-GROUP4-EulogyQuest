@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-// make nav bar look nice @Parham HAHAHA add a css file and include here please :D
+// Navbar component
 function NavBar() {
     return (
         <div className="navbar">
