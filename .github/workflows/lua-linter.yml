@@ -1,0 +1,26 @@
+name: Lua Linter
+
+on:
+  pull_request:
+    paths:
+      - '**/*.lua'
+
+jobs:
+  luacheck:
+    name: Run luacheck on Lua files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Lua
+        uses: leafo/gh-actions-lua@v9
+        with:
+          lua-version: "5.1"
+
+      - name: Install luacheck
+        run: luarocks install luacheck
+
+      - name: Run luacheck
+        run: luacheck .
