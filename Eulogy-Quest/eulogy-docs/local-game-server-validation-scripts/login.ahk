@@ -3,6 +3,8 @@
 ; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SendMode, Event
 
+;// ai-gen start (ChatGPT-4o, 1)
+
 ; === Make absolutely sure each keypress happens on the EverQuest-focuesd window
 ; === Windows loves stealing focus away.
 FocusAndEnter() {
@@ -55,3 +57,5 @@ FocusAndEnter()  ; Select server
 
 Sleep, 20000     ; Long wait just in case loading takes a long time
 FocusAndEnter()  ; Log in with a character
+
+;// ai-gen end
