@@ -8,6 +8,9 @@ code/
 .dropbox_uploader
 .bash_history
 assets/ssh/
+venv/
+*/venv/
+*.env
 
 ## // ai-gen start (ChatGPT-4o, 1)
 !server/quests/**
