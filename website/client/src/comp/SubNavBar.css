@@ -12,7 +12,7 @@
     height: 50px;
     width: fit-content;
     position: relative;
-    margin-top: 75px; /* To avoid overlap with the main navbar */
+    margin-top: 75px; 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
