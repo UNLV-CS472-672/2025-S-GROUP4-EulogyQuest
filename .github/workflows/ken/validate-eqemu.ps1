@@ -7,15 +7,13 @@
 # Once we authenticate manually on the terminal, adding the key
 # to window's ssh-agent, ssh will not re-ask for the passphrase.
 # (If the passphrase is requested silently in a script, the script will time-out.)
-$keyLoaded = (ssh-add -L 2>$null) -match "ssh-rsa"
 
-if (-not $keyLoaded) {
-    Write-Host "[INFO] Your SSH key is not loaded."
-    Write-Host 'Please run: ssh-add $env:USERPROFILE\.ssh\id_rsa (in a windows terminal) before running this script.'
+$keyCheck = ssh-add -L 2>&1
+if ($keyCheck -match "The agent has no identities") {
+    Write-Host "[FAIL] SSH key not loaded. Run: ssh-add $env:USERPROFILE\.ssh\id_rsa"
     exit 1
-} else {
-    Write-Host "`n[INFO] ssh-agent has the key"
 }
+# Note: this can silently fail if the id_rsa key is needed, but another key is loaded.
 
 # === Run start script ===
 Write-Host "=== Starting EQEmu server and validating login ==="
