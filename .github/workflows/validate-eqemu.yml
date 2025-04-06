@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run validation script from selected user folder
-        shell: pwsh
+        shell: powershell
         run: |
           $folder = "${{ github.event.inputs.user }}"
           $scriptPath = ".github/workflows/$folder/validate-eqemu.ps1"
