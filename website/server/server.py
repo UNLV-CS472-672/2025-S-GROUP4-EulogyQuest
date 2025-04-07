@@ -2,8 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 from datetime import datetime
+from dotenv import load_dotenv
 import os
 import json
+
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 CORS(app)
@@ -11,7 +15,7 @@ CORS(app)
 # TODO : Change output from excel to json
 # TODO : present prompt to gpt and get a response in json format
 
-EXCEL_FILE = "prompts.xlsx"
+# EXCEL_FILE = "prompts.xlsx"
 
 # TODO : multiple endpoints for different models (one for famous person, one for honored one)
 
@@ -19,7 +23,8 @@ EXCEL_FILE = "prompts.xlsx"
 # this endpoint only recieves ONE json file, and will overwrite the previous one, the task is next
 # we have to get gpt to generate a quest based on the json file we received which should only be 1 file
 # endpoint to get a name from famous person route
-@app.route('/famous-person', methods=['POST'])  # changed from GET to POST
+# /* ai-gen start (ChatGPT-4, 2) */
+@app.route('/famous-person', methods=['POST'])  
 def post_famous_person():
     data = request.get_json()
     famous_person = data.get('message') if data else None
@@ -39,7 +44,7 @@ def post_famous_person():
         json.dump({"famous_person": famous_person}, file)
 
     return jsonify(response), 200
-
+# /* end of ai-get */
 
 # ____________this endpoint is no longer needed will keep here for reference ____________#
 # @app.route('/prompt', methods=['POST'])
