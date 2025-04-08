@@ -8,7 +8,7 @@ function FamousPerson() {
     const [Input, SetInput] = useState(null);
     const [Ret, setRet] = useState(true);
     const [message, setMessage] = useState("");
-    const [response, setResponse] = useState(null);
+    const [/*response*/, setResponse] = useState(null);
 
     /* ai-gen start (ChatGPT-4, 2) */
     const handleSubmit = async () => {
