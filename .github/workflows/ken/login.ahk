@@ -25,7 +25,8 @@ FocusAndTab() {
 ; == after any changes are made to the repo
 
 ; === Config ===
-logPath := A_ScriptDir "\ahk-log.txt"
+;logPath := A_ScriptDir "\ahk-log.txt"
+logPath := A_Desktop "\ahk-log.txt"
 FileDelete, %logPath%
 FileAppend, [%A_Now%] login.ahk started.`n`, %logPath%
 FileAppend, Script directory: %A_ScriptDir%`n`, %logPath%
