@@ -5,9 +5,11 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 import json
+from openai import OpenAI
 
 load_dotenv()
-api_key = os.getenv("OPENAI_API_KEY")
+# api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key = os.getenv("OPEN_API_KEY"))
 
 app = Flask(__name__)
 CORS(app)
@@ -43,7 +45,56 @@ def post_famous_person():
     with open(output_file_name, "w") as file:
         json.dump({"famous_person": famous_person}, file)
 
+
+    # build GPT prompt
+    prompt = f"""
+    Create a fun, emotionally meaningful EverQuest-style quest inspired by {famous_person}.
+    The quest should have:
+    - A title
+    - A brief description of why it's meaningful
+    - 3-5 objectives the player must complete
+    - A quest reward
+
+    Format the output in structured JSON like this:
+    {{
+        "title": "...",
+        "description": "...",
+        "objectives": ["...", "..."],
+        "reward": "..."
+    }}
+    """
+
+    try:
+        response = client.chat.completions.create(
+            model = "gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a creative quest designer for the fantasy MMORPG game EverQuest."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature = 0.7,
+            max_tokens = 600
+        )
+
+        quest_text = response.choices[0].message.content.strip()
+
+        # save input and generated quest
+        json_data = {
+            "famous_person": famous_person,
+            "quest": quest_text
+        }
+
+        with open("famous_person_with_ai.json", "w") as file:
+            json.dump(json_data, file, indent=2)
+
+        return jsonify(json_data), 200
+
+    except Exception as e:
+        print(f"OpenAI API error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
     return jsonify(response), 200   
+
 # /* end of ai-get */
 
 @app.route('/honored_one', methods=['POST'])  
