@@ -1,0 +1,40 @@
+/* SubNavBar.css */
+
+/* ai-gen start (ChatGPT-4, 2) */
+.subnavbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #C9A03B, #956701, #026aab, #2b99de, #FFFFFF);
+    height: 50px;
+    width: fit-content;
+    position: relative;
+    margin-top: 75px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subnavbar a {
+    display: inline-flex;
+    align-items: center;
+    color: #005d96;
+    background: linear-gradient(to bottom, #cfcfcf, #ffffff, #cfcfcf);
+    border: 3px solid #000000;
+    text-align: center;
+    padding: 0px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    height: 35px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.subnavbar a:hover {
+    background: linear-gradient(to bottom, #a8a8a8, #d2d2d2, #a8a8a8);
+    color: #0074bd;
+    border: 3px solid #000000;
+}

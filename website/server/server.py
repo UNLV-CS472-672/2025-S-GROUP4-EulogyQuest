@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -11,33 +12,40 @@ api_key = os.getenv("OPENAI_API_KEY")
 app = Flask(__name__)
 CORS(app)
 
-EXCEL_FILE = "prompts.xlsx"
+# TODO : Change output from excel to json
+# TODO : present prompt to gpt and get a response in json format
 
-@app.route('/prompt', methods=['POST'])
-def receive_prompt():
+# TODO : multiple endpoints for different models (one for famous person, one for honored one)
+
+
+# this endpoint only recieves ONE json file, and will overwrite the previous one, the task is next
+# we have to get gpt to generate a quest based on the json file we received which should only be 1 file
+# endpoint to get a name from famous person route
+
+# /* ai-gen start (ChatGPT-4, 2) */
+@app.route('/famous-person', methods=['POST'])  
+def post_famous_person():
     data = request.get_json()
-    # check if message is present in the request
-    message = data.get('message') if data else None
-    # check if message is not empty
-    if not message or not message.strip():
+    famous_person = data.get('message') if data else None
+
+    if not famous_person or not famous_person.strip():
         return jsonify({'error': 'Invalid request: "message" field is required and cannot be empty'}), 400
 
-    # Get current timestamp
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Example response for the famous person
+    response = {
+        'famous_person': famous_person,
+        'quest': f"Create a quest inspired by {famous_person}."
+    }
 
-    # Load existing file or create new DataFrame
-    if os.path.exists(EXCEL_FILE):
-        df = pd.read_excel(EXCEL_FILE)
-    else:
-        df = pd.DataFrame(columns=["Timestamp", "Prompt"])
+    # json file name
+    json_file = "famous_person_before_ai.json"
+    with open(json_file, "w") as file:
+        json.dump({"famous_person": famous_person}, file)
 
-    # Append new row
-    df = pd.concat([df, pd.DataFrame([{"Timestamp": timestamp, "Prompt": message}])], ignore_index=True)
+    return jsonify(response), 200
+# /* end of ai-get */
 
-    # Save back to Excel
-    df.to_excel(EXCEL_FILE, index=False)
 
-    return jsonify({'received': message, 'status': 'Message saved to Excel'}), 200
 
 
 if __name__ == '__main__':
