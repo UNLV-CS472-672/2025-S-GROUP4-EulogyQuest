@@ -1,0 +1,33 @@
+# //gen-ai start (ChatGPT-4o, 0)
+name: Validate EQEmu Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      user:
+        description: 'Team member folder (e.g., ken, john, maria)'
+        required: true
+        default: 'ken'
+
+jobs:
+  validate:
+    name: Run EQEmu Validation for ${{ github.event.inputs.user }}
+    runs-on: [self-hosted, windows, local-game-server]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run validation script from selected user folder
+        shell: powershell
+        run: |
+          $folder = "${{ github.event.inputs.user }}"
+          $scriptPath = ".github/workflows/$folder/validate-eqemu.ps1"
+          if (-Not (Test-Path $scriptPath)) {
+            Write-Host "[FAIL] Script not found at $scriptPath"
+            exit 1
+          }
+          Write-Host "Running script: $scriptPath"
+          & $scriptPath
+
+# //gen-ai end
