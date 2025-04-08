@@ -15,7 +15,7 @@ Start-Sleep -Seconds 10
 Write-Host "Waiting for SSH connectivity..."
 
 $sshReady = $false
-$maxSshWait = 90
+$maxSshWait = 180
 $sshTimer = 0
 
 while (-not $sshReady -and $sshTimer -lt $maxSshWait) {
