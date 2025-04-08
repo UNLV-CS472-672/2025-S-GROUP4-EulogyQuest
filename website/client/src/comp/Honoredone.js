@@ -5,9 +5,11 @@ import SubNavBar from "./SubNavBar";
 function HonoredOne() {
 
     const [name, setName] = React.useState("");
+    const [file, setFile] = React.useState(null);
 
     const handleSubmit = () => {
         console.log("Submitted name:", name);
+        console.log("Submitted file:", file.name);
     };
 
     return (
@@ -23,8 +25,6 @@ function HonoredOne() {
                     onChange={(e) => setName(e.target.value)}
                     style={{ width: "300px", padding: "10px", fontSize: "16px", marginBottom: "20px" }}
                 />
-                <button onClick={handleSubmit}>Submit</button>
-
                 <div style={{ marginTop: "20px" }}>
                     <input
                         type="file"
@@ -32,10 +32,14 @@ function HonoredOne() {
                         onChange={(e) => {
                             if (e.target.files.length > 0) {
                                 console.log("File selected:", e.target.files[0].name);
+                                setFile(e.target.files[0]);
                             }
                         }}
                     />
                 </div>
+                    <div style={{ marginTop: "20px" }}>
+                        <button onClick={handleSubmit}>Submit</button>
+                    </div>
             </div>
         </div>
     );
