@@ -25,12 +25,19 @@ FocusAndTab() {
 ; == after any changes are made to the repo
 
 ; === Config ===
+logPath := A_ScriptDir "\ahk-log.txt"
+FileDelete, %logPath%
+FileAppend, [%A_Now%] login.ahk started.`n`, %logPath%
+FileAppend, Script directory: %A_ScriptDir%`n`, %logPath%
 SetWorkingDir, C:\Eulogy-quest-client-local; Ensures a consistent starting directory.
 password := "buzz9099e"
 eqgameShortcut := "Eulogy-local.lnk"
 
 ; Launch game client with patchme
+FileAppend, [%A_Now%] Launching EQ via shortcut: %eqgameShortcut%`n`, %logPath%
 Run, %A_Desktop%\%eqgameShortcut%
+FileAppend, [%A_Now%] eqgame shortcut launch executed.`n`, %logPath%
+
 WinWaitActive, EverQuest
 
 Sleep, 3000      ; Wait for EULA screen
