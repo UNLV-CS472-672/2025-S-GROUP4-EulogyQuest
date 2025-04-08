@@ -24,6 +24,8 @@ CORS(app)
 # we have to get gpt to generate a quest based on the json file we received which should only be 1 file
 # endpoint to get a name from famous person route
 
+output_file_name = "before_ai.json"
+
 # /* ai-gen start (ChatGPT-4, 2) */
 @app.route('/famous-person', methods=['POST'])  
 def post_famous_person():
@@ -40,9 +42,9 @@ def post_famous_person():
     }
 
     # json file name
-    json_file = "famous_person_before_ai.json"
-    with open(json_file, "w") as file:
+    with open(output_file_name, "w") as file:
         json.dump({"famous_person": famous_person}, file)
+
 
     # build GPT prompt
     prompt = f"""
@@ -90,9 +92,32 @@ def post_famous_person():
         print(f"OpenAI API error: {e}")
         return jsonify({'error': str(e)}), 500
 
+
+    return jsonify(response), 200   
+
 # /* end of ai-get */
 
+@app.route('/honored_one', methods=['POST'])  
+def post_honored_one():
+    data = request.get_json()
+    honored_one = data.get('message_name') if data else None
+    honored_one_logs = data.get('message_logs') if data else None
 
+    if not honored_one or not honored_one.strip():
+        return jsonify({'error': 'Invalid request: "name" field is required and cannot be empty'}), 400
+
+    # Example response for the honored one
+    response = {
+        'honored_one': honored_one,
+        'quest': f"Create a quest inspired by {honored_one}."
+    }
+
+    # json file name
+    with open(output_file_name, "w") as file:
+        json.dump({"honored_one": honored_one, "text logs":honored_one_logs}, file)
+        
+
+    return jsonify(response), 200
 
 
 if __name__ == '__main__':
