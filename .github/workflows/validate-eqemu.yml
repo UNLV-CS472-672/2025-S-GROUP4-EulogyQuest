@@ -1,22 +1,28 @@
 # //gen-ai start (ChatGPT-4o, 0)
+
 name: Validate EQEmu Server
 
 on:
   workflow_dispatch:
     inputs:
       user:
-        description: 'Team member folder (e.g., ken, john, maria)'
+        description: 'Team member folder (e.g., ken, john, kevin)'
         required: true
         default: 'ken'
+      branch_to_validate:
+        description: 'Branch to validate (e.g., frontend, feature/x)'
+        required: true
 
 jobs:
   validate:
-    name: Run EQEmu Validation for ${{ github.event.inputs.user }}
+    name: Run EQEmu Validation for ${{ github.event.inputs.user }} on ${{ github.event.inputs.branch_to_validate }}
     runs-on: [self-hosted, windows, local-game-server]
 
     steps:
-      - name: Checkout repo
+      - name: Checkout PR branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch_to_validate }}
 
       - name: Run validation script from selected user folder
         shell: powershell
