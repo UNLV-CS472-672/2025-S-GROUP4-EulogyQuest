@@ -12,6 +12,8 @@ function FamousPerson() {
 
     /* ai-gen start (ChatGPT-4, 2) */
     const handleSubmit = async () => {
+
+
         try {
             const response = await axios.post("http://localhost:5000/famous-person", {
                 message: Input,
