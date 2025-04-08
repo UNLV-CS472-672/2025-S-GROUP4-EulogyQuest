@@ -7,10 +7,9 @@ function NavBar() {
     return (
         <div className="navbar">
             <Link to="/about" >About</Link>
-            <Link to="/prompt" class = "active">Prompt</Link>
+            <Link to="/generate-quest" class = "active">Generate quest</Link>
         </div>
     );
 }
 
 export default NavBar;
-
