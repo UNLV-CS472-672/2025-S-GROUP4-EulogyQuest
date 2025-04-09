@@ -1,6 +1,9 @@
 ## [Overview](#overview)
 _<What changed? Why?>_
 
+## [Diagram](#diagram)
+![Diagram](images/System_Overview.jpeg)
+
 ## [YouTrack Ticket](#tickets)
 - https://eulogy-quest.youtrack.cloud/issue/EUL-ISSUENUMBER
 
