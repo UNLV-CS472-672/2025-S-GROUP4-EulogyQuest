@@ -1,0 +1,108 @@
+{
+    "honored_target": "Abraham Lincoln",
+    "famous_quote": "Government of the people, by the people, for the people, shall not perish from the Earth.",
+    "story": "Abraham Lincoln, once a humble frontier lawyer, rose to become the leader of a nation on the brink of dissolution. In a dramatic twist of fate, he not only held the Union together through civil war, but also set in motion the end of slavery. His tale is one of deep sorrow, wisdom, and resolve.",
+    "npc_scripting": [
+      {
+        "npc": "Judge Marlen",
+        "npc_id": 3001,
+        "appearance": {
+          "race": "Human",
+          "gender": "Male"
+        },
+        "dialogue": {
+          "hail-text": "Justice is the first step in any great leader\u2019s story. Are you ready to [walk] it?"
+          },
+        "location": {
+          "zone": "North Qeynos",
+          "coordinates": {
+            "x": 300,
+            "y": -120,
+            "z": 10
+          },
+          "heading": 90
+        }
+      },
+      {
+        "npc": "Scholar Theopold",
+        "npc_id": 3002,
+        "appearance": {
+          "race": "Erudite",
+          "gender": "Male"
+        },
+        "dialogue": {
+          "hail-text": "He spoke for a nation. Will you [speak] with the voice of the honored?"
+        },
+        "location": {
+          "zone": "East Freeport",
+          "coordinates": {
+            "x": -500,
+            "y": 250,
+            "z": 13
+          },
+          "heading": 135
+        }
+      },
+      {
+        "npc": "Captain Emerick",
+        "npc_id": 3003,
+        "appearance": {
+          "race": "Barbarian",
+          "gender": "Male"
+        },
+        "dialogue": {
+          "hail-text": "We fight not for conquest, but for [unity]. That\u2019s what Lincoln believed."
+        },
+        "location": {
+          "zone": "South Karana",
+          "coordinates": {
+            "x": -2450,
+            "y": 1300,
+            "z": 10
+          },
+          "heading": 180
+        }
+      },
+      {
+        "npc": "Playwright Jondar",
+        "npc_id": 3004,
+        "appearance": {
+          "race": "Half-Elf",
+          "gender": "Male"
+        },
+        "dialogue": {
+          "hail-text": "In the final act, only silence remains. Will you [listen] for what lingers beyond the curtain?"
+        },
+        "location": {
+          "zone": "Rivervale",
+          "coordinates": {
+            "x": 180,
+            "y": -90,
+            "z": 9
+          },
+          "heading": 210
+        }
+      },
+      {
+        "npc": "Ghost of Lincoln",
+        "npc_id": 3005,
+        "appearance": {
+          "race": "Human",
+          "gender": "Male"
+        },
+        "dialogue": {
+          "hail-text": "You walk in shadows of memory. Do you [seek] the legacy I left behind?"
+        },
+        "location": {
+          "zone": "Plane of Knowledge",
+          "coordinates": {
+            "x": 75,
+            "y": -120,
+            "z": 13
+          },
+          "heading": 270
+        }
+      }
+    ]
+  }
+  
