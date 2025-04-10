@@ -1,0 +1,25 @@
+---
+name: "Bugfix Issue"
+about: "Report a bug that needs to be fixed. Please provide detailed information to help us resolve the issue."
+title: "[Bugfix] "
+labels: bug
+assignees: NAME
+---
+
+## Describe the Bug
+_Description of the bug concise and detailed how it negatively effects the environment_
+
+## Steps to Fix the bug
+_List the steps needed to fix the bug:_
+
+## Expected Behavior
+_A clear and concise description of what you expected to happen._
+
+## Screenshots
+_If applicable, add screenshots to help explain your problem._
+
+## Environment Details
+- **Folders/Files changed:** 
+
+## Additional Context
+_Add any other context about the problem here (e.g., error logs, stack traces, etc.)._
