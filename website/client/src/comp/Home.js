@@ -12,7 +12,8 @@ function Home() {
     return (
         <div style={backgroundStyle}>
         <img src={backgroundImage} alt="Background" style={{ display: "none" }} />
-      
+        
+        {/* ai-gen start (ChatGPT-4, 2) */}
         {/* Left clear section */}
         <div style={{
           position: "absolute",
@@ -58,6 +59,8 @@ function Home() {
           padding: "1rem",
           textAlign: "center"
         }}>
+        {/* ai-gen end (ChatGPT-4, 2) */}
+
                 <h1 style={{ fontSize: "3rem", textAlign: "center" }}>Welcome to Eulogy Quest</h1>
                 <p>
                     This website is inspired by the popular MMORPG EverQuest. With this website, you can generate

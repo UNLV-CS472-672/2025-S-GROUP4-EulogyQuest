@@ -1,0 +1,83 @@
+/* ai-gen start (ChatGPT-4, 2) */
+.split-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-family: sans-serif;
+    flex-direction: row;
+  }
+  
+  .split-section {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .section-title-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    padding: 1rem;
+    margin-bottom: 25rem;
+    max-width: 25vw;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: black;
+    margin: 0;
+  }
+  
+  .section-description {
+    max-width: 30vw;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .quest-button {
+    display: inline-flex;
+    align-items: center;
+    color: #005d96;
+    background: linear-gradient(to bottom, #cfcfcf, #ffffff, #cfcfcf);
+    border: 5px solid #000000;
+    text-align: center;
+    padding: 0 25px;
+    font-size: 27px;
+    height: 7vh;
+    line-height: 7vh;
+    font-weight: bold;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quest-button:hover {
+    background: linear-gradient(to bottom, #a8a8a8 ,#d2d2d2, #a8a8a8);
+    color: #005d96;
+    border: 5px solid ##000000;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .split-container {
+      flex-direction: column;
+    }
+  
+    .section-description {
+      max-width: 80vw;
+    }
+  
+    .section-title-container {
+      max-width: 80vw;
+      margin-bottom: 5rem;
+    }
+  }
+  
+/* ai-gen end (ChatGPT-4, 2) */
