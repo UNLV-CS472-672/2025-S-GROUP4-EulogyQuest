@@ -1,0 +1,24 @@
+{
+    "prompt_instructions": "You are an expert EQEmu quest integrator. Given a valid EverQuest JSON quest file (e.g., abraham_lincoln_quest_final.json), generate a corresponding implementation file named [honored_target]_implementation.json. This file contains SQL insert statements required to register all quest NPCs into the game. Include NPC type data, spawn point definitions, and spawn linkage across all relevant tables. The output must be JSON-structured and complete.",
+  
+    "implementation_requirements": [
+      "Parse the input 'npc_scripting' array to extract all NPCs",
+      "For each NPC, generate SQL INSERT statements for the following tables:",
+      "  - npc_types",
+      "  - spawngroup",
+      "  - spawnentry",
+      "  - spawn2",
+      "Use the following ID minimums to avoid conflict with existing data:",
+      "  - npc_types.id and spawngroup.id start at 2000100",
+      "  - spawn2.id starts at 3266100",
+      "Each npc_types.id is mapped 1:1 to a unique spawngroupID",
+      "Each spawn2 entry uses the npc's zone, x, y, z (with a Z-buffer: +10 if outdoor, +5 if indoor), and heading",
+      "The spawngroup.name should be the concatenation of the NPC's zone and its spawngroupID, joined with an underscore",
+      "Each spawnentry entry should have a 100% chance to spawn the NPC",
+      "The resulting JSON must contain the following keys: npc_type_insert, spawngroup_insert, spawn2_insert, spawnentry_insert, and done",
+      "The value of 'done' must be the string 'done', to indicate completion"
+    ],
+  
+    "output_format": "Output as a valid JSON file named [honored_target]_implementation.json. Do not include any commentary or explanation—just the full JSON."
+  }
+  
