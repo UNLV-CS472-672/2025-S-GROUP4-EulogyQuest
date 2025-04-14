@@ -105,3 +105,7 @@ venv.bak/
 # PyPI configuration file
 .pypirc
 ## Github's .gitignore boilerplate for Python - END
+
+# Chart stuff:
+Eulogy-Quest/chart-scripts/UpdateData.py
+Eulogy-Quest/chart-scripts/chart_data.json
