@@ -1,0 +1,168 @@
+{
+    "kennethken73": {
+        "Name": "Ken",
+        "PR Count": 18,
+        "PR Dates": [
+            "2025-04-08T06:42:25Z",
+            "2025-04-08T06:03:41Z",
+            "2025-04-08T02:50:35Z",
+            "2025-04-08T02:26:35Z",
+            "2025-04-08T01:53:48Z",
+            "2025-04-08T00:50:13Z",
+            "2025-04-07T23:17:09Z",
+            "2025-04-04T08:09:59Z",
+            "2025-04-04T06:32:15Z",
+            "2025-03-28T05:57:45Z",
+            "2025-03-28T04:29:11Z",
+            "2025-03-28T04:19:32Z",
+            "2025-03-28T04:10:08Z",
+            "2025-03-14T06:47:26Z",
+            "2025-03-14T05:04:19Z",
+            "2025-03-13T07:38:39Z",
+            "2025-03-12T02:53:29Z",
+            "2025-03-07T09:01:55Z"
+        ],
+        "PR Reviews": 11,
+        "Issue Count": 8,
+        "Issue Comments": 1,
+        "Files Changed": 21,
+        "LOC Changed": 1179
+    },
+    "Adamohamou": {
+        "Name": "Adam",
+        "PR Count": 6,
+        "PR Dates": [
+            "2025-04-08T06:15:48Z",
+            "2025-03-25T23:53:59Z",
+            "2025-03-25T02:44:13Z",
+            "2025-03-23T07:02:47Z",
+            "2025-03-23T06:44:00Z",
+            "2025-03-23T06:40:46Z"
+        ],
+        "PR Reviews": 8,
+        "Issue Count": 3,
+        "Issue Comments": 0,
+        "Files Changed": 32,
+        "LOC Changed": 18516
+    },
+    "michaelsoffer": {
+        "Name": "Michael",
+        "PR Count": 6,
+        "PR Dates": [
+            "2025-04-08T22:36:15Z",
+            "2025-04-06T03:54:55Z",
+            "2025-03-28T00:24:04Z",
+            "2025-03-27T01:57:28Z",
+            "2025-03-25T21:11:28Z",
+            "2025-03-25T02:46:26Z"
+        ],
+        "PR Reviews": 2,
+        "Issue Count": 6,
+        "Issue Comments": 0,
+        "Files Changed": 6,
+        "LOC Changed": 109
+    },
+    "RISINGCHART719": {
+        "Name": "Parham",
+        "PR Count": 6,
+        "PR Dates": [
+            "2025-04-08T22:28:10Z",
+            "2025-03-28T00:26:26Z",
+            "2025-03-25T23:52:29Z",
+            "2025-03-25T23:52:30Z",
+            "2025-03-23T06:42:18Z",
+            "2025-03-23T06:36:57Z"
+        ],
+        "PR Reviews": 6,
+        "Issue Count": 7,
+        "Issue Comments": 0,
+        "Files Changed": 10,
+        "LOC Changed": 214
+    },
+    "Kemoshu": {
+        "Name": "Kevin",
+        "PR Count": 1,
+        "PR Dates": [
+            "2025-03-25T03:06:07Z"
+        ],
+        "PR Reviews": 1,
+        "Issue Count": 2,
+        "Issue Comments": 0,
+        "Files Changed": 2,
+        "LOC Changed": 5
+    },
+    "hhrh": {
+        "Name": "Hardy",
+        "PR Count": 3,
+        "PR Dates": [
+            "2025-04-08T05:22:48Z",
+            "2025-03-23T06:36:11Z",
+            "2025-03-17T22:47:12Z"
+        ],
+        "PR Reviews": 5,
+        "Issue Count": 2,
+        "Issue Comments": 2,
+        "Files Changed": 3,
+        "LOC Changed": 83
+    },
+    "tannerdonovan": {
+        "Name": "Tanner",
+        "PR Count": 2,
+        "PR Dates": [
+            "2025-03-28T00:33:45Z",
+            "2025-03-28T00:33:47Z"
+        ],
+        "PR Reviews": 0,
+        "Issue Count": 0,
+        "Issue Comments": 0,
+        "Files Changed": 2,
+        "LOC Changed": 6
+    },
+    "Kirchpa": {
+        "Name": "Jayson",
+        "PR Count": 4,
+        "PR Dates": [
+            "2025-04-10T06:45:23Z",
+            "2025-03-28T00:50:04Z",
+            "2025-03-17T22:50:48Z",
+            "2025-03-17T22:44:23Z"
+        ],
+        "PR Reviews": 3,
+        "Issue Count": 2,
+        "Issue Comments": 0,
+        "Files Changed": 5,
+        "LOC Changed": 25
+    },
+    "richvar": {
+        "Name": "Richard",
+        "PR Count": 6,
+        "PR Dates": [
+            "2025-03-24T03:25:30Z",
+            "2025-03-24T03:17:06Z",
+            "2025-03-24T03:31:06Z",
+            "2025-03-25T03:13:38Z",
+            "2025-03-12T05:42:50Z",
+            "2025-03-12T02:33:46Z"
+        ],
+        "PR Reviews": 4,
+        "Issue Count": 3,
+        "Issue Comments": 0,
+        "Files Changed": 4,
+        "LOC Changed": 22
+    },
+    "John-Zaleschuk": {
+        "Name": "John",
+        "PR Count": 4,
+        "PR Dates": [
+            "2025-03-21T09:21:34Z",
+            "2025-03-21T10:01:31Z",
+            "2025-03-17T22:48:28Z",
+            "2025-03-17T22:29:25Z"
+        ],
+        "PR Reviews": 3,
+        "Issue Count": 3,
+        "Issue Comments": 0,
+        "Files Changed": 8,
+        "LOC Changed": 438
+    }
+}
