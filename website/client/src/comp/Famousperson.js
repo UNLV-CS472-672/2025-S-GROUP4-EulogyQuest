@@ -34,7 +34,7 @@ function FamousPerson() {
         
         <div >
             <SubNavBar />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "50vh", textAlign: "center" }}>
             <h1>Famous Person</h1>
             <p>Enter a famous person to generate a quest. This will be generated using ChatGPT</p>
             <input
