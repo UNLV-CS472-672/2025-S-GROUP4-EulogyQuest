@@ -6,8 +6,9 @@ import "./NavBar.css";
 function NavBar() {
     return (
         <div className="navbar">
-            <Link to="/about" >About</Link>
+            <Link to="/" >Home</Link>
             <Link to="/generate-quest" class = "active">Generate quest</Link>
+            <Link to="/about">About</Link>
         </div>
     );
 }
