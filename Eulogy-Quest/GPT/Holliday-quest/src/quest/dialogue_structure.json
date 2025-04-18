@@ -1,0 +1,89 @@
+{
+    "honored_target" : "",
+    "npc_scripting": [
+        {
+            "full name": "<Honored_target>'s ghost",
+            "first name": "<Honored_target>s",
+            "surname": "ghost",
+
+            "dialogue": {
+                "hail": "Explanitory text. Call to some [action1].",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text sending the player to <Legacy-NPC-1>. The text here should say exactly who <Legacy-NPC-1> is, by name. The text should strongly hint at where to find <Legacy-NPC-1>, using clues such as zone geography and the names of mobs in the zone. The text should motivate the player to action. Note that this text (keyword3) does not include a bracketed link. We will name <Legacy-NPC-1> 'Professor Liora Hale' in order to demonstrate how to deal with titles in a name. But here 'Professor Liora Hale' is just an example. Note also that <LEGACY-NPC-2> is named 'John Doe' as yet another instructive example on what to do.",
+                "turn-in": "This text happens when the player completes the quest by turning in all 4 items on the quest chain loop (<COLLECT-1>, <COLLECT-2>, <COLLECT-3>, and <COLLECT-4>)."
+            }
+        },
+        {
+            "full name": "Professor Liora Hale",
+            "first name": "Liora",
+            "surname": "Professor Hale",
+            
+            "dialogue": {
+                "hail": "Stand-alone text this NPC might say. Then a brief prompt to which the player can respond to if they wish for more interaction. Call to some [action1]. This action is likely 'hear', indicating the player wishes to hear this NPC's need.",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text which directs the player to go find an object for <Legacy-NPC-1> (here, Professor Liora Hale). <Legacy-NPC-1> tells a story about why <MOB-1> has <ITEM-1>, identifies <MOB-1>, and directs the player to go get <ITEM-1> from <MOB-1>. Note that this text (keyword3) does not include a bracketed link.",
+                "turn-in": "Text thanking the player for retrieving <ITEM-1>. <Legacy-NPC-1> gives the player <COLLECT-1>. More text sending the player to <Legacy-NPC-2>. The text here should say exactly who <Legacy-NPC-2> is, by name. The text should strongly hint at where to find <Legacy-NPC-2>, using clues such as zone geography and the names of mobs in the zone. The text should motivate the player to action. Note that this text (turn-in) does not include a bracketed link."
+            }
+        },
+        {
+            "full name": "John Doe",
+            "first name": "John",
+            "surname": "Doe",
+            
+            "dialogue": {
+                "hail": "Stand-alone text this NPC might say. Then a brief prompt to which the player can respond to if they wish for more interaction. Call to some [action1]. This action is likely 'hear', indicating the player wishes to hear this NPC's need.",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text which directs the player to go find an object for <Legacy-NPC-2> (here, John Doe). <Legacy-NPC-2> tells a story about why <MOB-2> has <ITEM-2>, identifies <MOB-2>, and directs the player to go get <ITEM-2> from <MOB-2>. Note that this text (keyword3) does not include a bracketed link.",
+                "turn-in": "Text thanking the player for retrieving <ITEM-2>. <Legacy-NPC-2> gives the player <COLLECT-2>. More text sending the player to <Legacy-NPC-3>. The text here should say exactly who <Legacy-NPC-3> is, by name. The text should strongly hint at where to find <Legacy-NPC-3>, using clues such as zone geography and the names of mobs in the zone. The text should motivate the player to action. Note that this text (turn-in) does not include a bracketed link."
+            }
+        },
+        {
+            "full name": "John Doe",
+            "first name": "John",
+            "surname": "Doe",
+            
+            "dialogue": {
+                "hail": "Stand-alone text this NPC might say. Then a brief prompt to which the player can respond to if they wish for more interaction. Call to some [action1]. This action is likely 'hear', indicating the player wishes to hear this NPC's need.",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text which directs the player to go find an object for <Legacy-NPC-2> (here, John Doe). <Legacy-NPC-2> tells a story about why <MOB-2> has <ITEM-2>, identifies <MOB-2>, and directs the player to go get <ITEM-2> from <MOB-2>. Note that this text (keyword3) does not include a bracketed link.",
+                "turn-in": "Text thanking the player for retrieving <ITEM-2>. <Legacy-NPC-2> gives the player <COLLECT-2>. More text sending the player to <Legacy-NPC-3>. The text here should say exactly who <Legacy-NPC-3> is, by name. The text should strongly hint at where to find <Legacy-NPC-3>, using clues such as zone geography and the names of mobs in the zone. The text should motivate the player to action. Note that this text (turn-in) does not include a bracketed link."
+        }
+    },
+        {
+            "full name": "<LEGACY-NPC-3>",
+            "first name": "",
+            "surname": "",
+            
+            "dialogue": {
+                "hail": "Stand-alone text this NPC might say. Then a brief prompt to which the player can respond to if they wish for more interaction. Call to some [action3]. This action is likely 'hear', indicating the player wishes to hear this NPC's need.",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text which directs the player to go find an object for <Legacy-NPC-3>. <Legacy-NPC-3> tells a story about why <MOB-3> has <ITEM-3>, identifies <MOB-3>, and directs the player to go get <ITEM-3> from <MOB-3>. Note that this text (keyword3) does not include a bracketed link.",
+                "turn-in": "Text thanking the player for retrieving <ITEM-3>. <Legacy-NPC-3> gives the player <COLLECT-3>. More text sending the player to <Legacy-NPC-4>. The text here should say exactly who <Legacy-NPC-4> is, by name. The text should strongly hint at where to find <Legacy-NPC-4>, using clues such as zone geography and the names of mobs in the zone. The text should motivate the player to action. Note that this text (turn-in) does not include a bracketed link."
+        }
+    },
+        {
+            "full name": "<LEGACY-NPC-4>",
+            "first name": "",
+            "surname": "",
+            
+            "dialogue": {
+                "hail": "Stand-alone text this NPC might say. Then a brief prompt to which the player can respond to if they wish for more interaction. Call to some [action3]. This action is likely 'hear', indicating the player wishes to hear this NPC's need.",
+                "action1": "More text with a [keyword1]",
+                "keyword1": "More text with another [keyword2]",
+                "keyword2": "More text. [keyword3]",
+                "keyword3": "Text which directs the player to go find an object for <Legacy-NPC-4>. <Legacy-NPC-4> tells a story about why <MOB-4> has <ITEM-4>, identifies <MOB-4>, and directs the player to go get <ITEM-4> from <MOB-4>. Note that this text (keyword3) does not include a bracketed link.",
+                "turn-in": "Text thanking the player for retrieving <ITEM-4>. <Legacy-NPC-4> gives the player <COLLECT-4>. Now <LEGACY-NPC-4 tells the player to return to the '<honored_target>'s ghost'. Note that this text (turn-in) does not include a bracketed link. It is at this point in the quest-chain that the player now has all items to give to the '<honored_target>'s ghost', namely: <COLLECT-1>, <COLLECT-2>, <COLLECT-3>, and <COLLECT-4>."
+        }
+    }
+    ]
+}
