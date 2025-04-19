@@ -1,0 +1,55 @@
+The GPT scripts and the python script represent 
+about three weeks of constant "collaboration" with ChatGPT.
+
+I have learned much about GPT in this endeavor.
+It is amazing, beautiful, inciteful, creative, and sensitive.
+It is also maddening, fickle, forgetfull, and overconfident.
+It hallucinates and illuminates at once.
+
+The "collaboration" is basically a mental tug-of-war,
+where instead of tugging horizontally,
+the tug is up a mountain.
+
+And you can get pretty high.
+
+
+
+=================
+Links to my ChatGPT conversations (for this project):
+https://chatgpt.com/share/6800d8c5-340c-800a-97a4-868ac3a2652c <-current convo
+https://chatgpt.com/share/6800d977-5264-800a-8399-70517808f313
+https://chatgpt.com/share/6800d9f1-f1ec-800a-a91c-2eeb9b066267
+https://chatgpt.com/share/6800da08-8160-800a-a6ad-90daf766b19d
+https://chatgpt.com/share/6800da40-f70c-800a-9540-587adde89565
+https://chatgpt.com/share/6800da77-d3f0-800a-943c-71486b914fc5
+https://chatgpt.com/share/6800dabc-160c-800a-a7ea-a028d6353011
+https://chatgpt.com/share/6800daf8-2a6c-800a-8869-8bb005bc7245
+https://chatgpt.com/share/6800db2e-5a94-800a-8716-e6294d18806e
+https://chatgpt.com/share/6800db5b-a5ec-800a-b3c9-7a3b950390a4 <-item desc. working
+
+The sql files are definitely all:
+    // ai-gen start (ChatGPT-4o, 0)
+   (But sql doesn't permit comments)
+
+The json version of the sql files are all:
+   // ai-gen start (ChatGPT-4o, 0)
+   (But json doesn't really permit comments)
+
+I need to create a python script to prepend the ai-gen tag
+to each output perl file. I'd rather not bother with prompts any more.
+Consider each as: # ai-gen start (ChatGPT-4o, 0)
+(TODO)
+
+As for the json files which include the results of my work in prompt-engineering,
+it depends on your definition. None of those prompts came out of GPT
+with anything less than a day (and often a week) of constant re-tweaking,
+(even though all that reworking/addition/regression-fixing/prompt-chaining/etc
+ was itself all direct GPT-output).
+
+The uml diagrams are my work using lucidchart.
+(Even the 'Chart' version of GPT had no idea what I am doing
+ with regards to a flowchart, even with all 9 of my README.txt's.)
+
+
+============================================================
+

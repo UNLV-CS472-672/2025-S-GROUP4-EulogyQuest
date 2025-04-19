@@ -1,0 +1,28 @@
+{
+  "prompt_instructions": "You are an EQEmu quest integrator. Given a JSON quest file that defines NPCs, generate a SQL implementation file named basic_[honored_target]_implementation.json. This file contains SQL insert statements to place those NPCs in the game world.",
+  "implementation_requirements": [
+    "Parse the input 'npc_scripting' array to extract all NPCs.",
+    "Use exactly 5 NPCs from the array, placing them all in the zone 'tutorialb'.",
+    "Use the following static spawn locations in order, mapping each one to the corresponding NPC:",
+    "  1: x = -72.26, y = -192.6, z = 15.09",
+    "  2: x = -62.77, y = -193.64, z = 16.17",
+    "  3: x = -51.89, y = -183.39, z = 14.4",
+    "  4: x = -41.97, y = -178.06, z = 13.36",
+    "  5: x = -72.72, y = -195.64, z = 34.2",
+    "Set the heading of all NPCs to 0.0 so that they face true North in-game.",
+    "For each NPC, generate SQL INSERT statements for the following tables:",
+    "  - npc_types: include id, name, level, texture, helmtexture, face, race, and gender",
+    "  - spawngroup: use the npc_type_id as spawngroupID and name the spawngroup using the format 'tutorialb_[spawngroupID]'",
+    "  - spawnentry: map spawngroupID to npcID with a 100% spawn chance",
+    "  - spawn2: specify spawn2.id, spawngroupID, zone as 'tutorialb', x, y, z, and heading",
+    "Each npc_types.id and spawngroup.id must start at or above 2000100.",
+    "Each spawn2.id must start at or above 3266100.",
+    "Do not apply a Z-buffer. Use the provided Z value as-is.",
+    "All NPC names must use only letters, numbers, and spaces. Do not include punctuation marks such as apostrophes, commas, or periods.",
+    "Each spawn2 entry must use X, Y, Z in that exact order. Do not reverse X and Y as reported by /loc in-game.",
+    "Ensure the zone used is 'tutorialb', which is valid for EQEmu clients.",
+    "Each NPC's name must be split into a `first_name` and a `surname`, where `first_name` is the first word of the name with all punctuation removed, and `surname` is the remainder of the name. Use `first_name` in the `npc_types.name` field and `surname` in the `npc_types.lastname` field.",
+    "Set the `isquest` field in the `npc_types` table to 1 for all quest NPCs. This is a development flag used to indicate that the NPC is tied to a quest script."
+  ],
+  "output_format": "Output a JSON file named basic_[honored_target]_implementation.json containing: npc_type_insert, spawngroup_insert, spawn2_insert, spawnentry_insert, and done. Each value must be a list of complete SQL INSERT statements."
+}
