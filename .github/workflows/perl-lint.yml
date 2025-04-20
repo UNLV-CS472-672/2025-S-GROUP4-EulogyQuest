@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Perl::Lint
         run: |
-          cpanm --notest Perl::Lint
+          cpanm --notest App::PerlLint
 
       - name: Run Perl::Lint
         run: |
