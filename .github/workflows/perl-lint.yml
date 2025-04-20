@@ -30,11 +30,19 @@ jobs:
       - name: Run Perl::Lint
         run: |
           echo "Running Perl::Lint..."
-          FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
-          if [ -n "$FILES" ]; then
-            echo "$FILES" | tr '\n' '\0' \
-              perl -MPerl::Lint::Linter -e 'Perl::Lint::Linter->new->lint(@ARGV)' $(find . -name '*.pl' -o -name '*.pm' -o -name '*.t')
-          else
-            echo "No Perl files to lint."
-          fi
+          find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \) -print0 | while IFS= read -r -d '' file; do
+            echo "Checking $file"
+            perl -MPerl::Lint::Linter -e '
+              my $file = $ARGV[0];
+              my $linter = Perl::Lint::Linter->new;
+              my $res = $linter->lint($file);
+              foreach my $v (@$res) {
+                printf "%s:%d:%d %s\n",
+                  $file,
+                  $v->{line},
+                  $v->{column},
+                  $v->{message};
+              }
+            ' "$file"
+          done
 # ai-gen end
