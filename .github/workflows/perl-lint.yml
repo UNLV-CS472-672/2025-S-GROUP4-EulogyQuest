@@ -22,10 +22,9 @@ jobs:
         with:
           perl-version: '5.34'
 
-      - name: Install Perl::Lint from GitHub
+      - name: Install Perl::Lint from vendored source
         run: |
-          git clone https://github.com/tokuhirom/Perl-Lint.git
-          cd Perl-Lint
+          cd .github/workflows/perl-lint-source/Perl-Lint-0.25
           cpanm --installdeps .
           perl Makefile.PL
           make install
