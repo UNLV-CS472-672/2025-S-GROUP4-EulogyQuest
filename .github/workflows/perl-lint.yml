@@ -1,9 +1,9 @@
-# ai-gen start (ChatGPT-4o, 0)
+# ai-gen start (ChatGPT-4o, 1)
 name: Perl Lint
 
 on:
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   perl_lint:
