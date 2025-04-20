@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Sanity check
+        run: echo "✅ Perl Critic workflow started!"
+        
       - name: Checkout repo
         uses: actions/checkout@v3
 
