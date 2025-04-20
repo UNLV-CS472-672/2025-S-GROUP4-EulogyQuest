@@ -26,5 +26,12 @@ jobs:
       - name: Run Perl::Critic
         run: |
           echo "Running Perl::Critic..."
-          perlcritic --verbose 8 --severity 3 .
+          FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
+          if [ -n "$FILES" ]; then
+            echo "$FILES" | tr '\n' '\0' \
+              | xargs -0 perlcritic --verbose 8 --severity 3
+          else
+            echo "No Perl files to check."
+          fi
+
 # ai-gen end
