@@ -1,3 +1,4 @@
+# ai-gen start (ChatGPT-4o, 1)
 name: Perl Lint
 
 on:
@@ -21,10 +22,13 @@ jobs:
         with:
           perl-version: '5.34'
 
-      - name: Install dependencies
+      - name: Install Perl::Lint from GitHub
         run: |
-          cpanm --notest Module::Install
-          cpanm --notest Perl::Lint
+          git clone https://github.com/tokuhirom/Perl-Lint.git
+          cd Perl-Lint
+          cpanm --installdeps .
+          perl Makefile.PL
+          make install
 
       - name: Add CLI wrapper
         run: |
@@ -48,3 +52,5 @@ jobs:
         run: |
           echo "Linting Perl files with Perl::Lint..."
           find . -type f \( -name '*.pl' -o -name '*.pm' \) -print0 | xargs -0 ./perllint
+
+# ai-gen end
