@@ -1,0 +1,36 @@
+# ai-gen start (ChatGPT-4o, 0)
+name: Perl Lint
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  perl_lint:
+    name: 🔎 Perl::Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install Perl::Lint
+        run: |
+          cpanm --notest Perl::Lint
+
+      - name: Run Perl::Lint (safely on Perl files)
+        run: |
+          echo "Running Perl::Lint..."
+          FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
+          if [ -n "$FILES" ]; then
+            echo "$FILES" | tr '\n' '\0' \
+              | xargs -0 perl -MPerl::Lint -e 'exit Perl::Lint->new->run_on_files(@ARGV)'
+          else
+            echo "No Perl files to lint."
+          fi
+# ai-gen end

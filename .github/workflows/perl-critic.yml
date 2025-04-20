@@ -1,0 +1,30 @@
+# ai-gen start (ChatGPT-4o, 0)
+name: Perl Critic
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  perl_critic:
+    name: 🧠 Perl::Critic
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install Perl::Critic
+        run: |
+          cpanm --notest Perl::Critic
+
+      - name: Run Perl::Critic
+        run: |
+          echo "Running Perl::Critic..."
+          perlcritic --verbose 8 --severity 3 .
+# ai-gen end
