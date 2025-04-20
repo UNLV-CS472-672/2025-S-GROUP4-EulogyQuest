@@ -12,9 +12,9 @@ jobs:
 
     steps:
 
-      - name: Sanity check
-        run: echo "✅ Perl Critic workflow started!"
-        
+      - name: Communicate start
+        run: echo "Perl Critic workflow started!"
+
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -33,7 +33,7 @@ jobs:
           FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
           if [ -n "$FILES" ]; then
             echo "$FILES" | tr '\n' '\0' \
-              | xargs -0 perlcritic --verbose 8 --severity 3
+              | xargs -0 perlcritic --verbose '%f:%l:%c %m (%p) [Severity: %s]' --severity 3
           else
             echo "No Perl files to check."
           fi

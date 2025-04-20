@@ -12,8 +12,8 @@ jobs:
 
     steps:
 
-      - name: Sanity check
-        run: echo "Workflow started!"
+      - name: Communicate start
+        run: echo "Perl Lint workflow started!"
 
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -27,13 +27,13 @@ jobs:
         run: |
           cpanm --notest Perl::Lint
 
-      - name: Run Perl::Lint (safely on Perl files)
+      - name: Run Perl::Lint
         run: |
           echo "Running Perl::Lint..."
           FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
           if [ -n "$FILES" ]; then
             echo "$FILES" | tr '\n' '\0' \
-              | xargs -0 perl -MPerl::Lint -e 'exit Perl::Lint->new->run_on_files(@ARGV)'
+              perl -MPerl::Lint::Linter -e 'Perl::Lint::Linter->new->lint(@ARGV)' $(find . -name '*.pl' -o -name '*.pm' -o -name '*.t')
           else
             echo "No Perl files to lint."
           fi
