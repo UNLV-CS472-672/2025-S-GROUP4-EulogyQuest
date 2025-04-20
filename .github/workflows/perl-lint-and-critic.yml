@@ -1,0 +1,53 @@
+# ai-gen start (ChatGPT-4o, 0)
+
+name: Perl Lint & Critic
+
+on: [push, pull_request]
+
+jobs:
+  perl_lint:
+    name: 🔎 Perl::Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install Perl::Lint
+        run: |
+          cpanm --notest Perl::Lint
+
+      - name: Run Perl::Lint (fast static check)
+        run: |
+          echo "Running Perl::Lint..."
+          perllint --severity high .
+
+  perl_critic:
+    name: 🧠 Perl::Critic
+    runs-on: ubuntu-latest
+    needs: perl_lint
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install Perl::Critic
+        run: |
+          cpanm --notest Perl::Critic
+
+      - name: Run Perl::Critic (style & best practices)
+        run: |
+          echo "Running Perl::Critic..."
+          perlcritic --verbose 8 --severity 3 .
+
+# ai-gen end
