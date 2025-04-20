@@ -7,7 +7,10 @@ assignees: NAME
 ---
 
 ## Describe the Bug
-_Description of the bug concise and detailed how it negatively effects the environment_
+_Concise description of the bug and how it negatively effects the gaming environment._
+
+## Repro Steps
+_What are the steps to reproduce this bug?_
 
 ## Steps to Fix the bug
 _List the steps needed to fix the bug:_
