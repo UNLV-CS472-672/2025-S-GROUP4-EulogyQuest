@@ -47,7 +47,7 @@ function About() {
             <div style={textStyle}>
                     <h1 style={{ fontSize: '2rem' }}>Why?</h1>
                         <p>
-                           Why did we make this project? Many everquest players enjoy custom quests that they either download or
+                           Why did we make this project? Many EverQuest players enjoy custom quests that they either download or
                            make, but what if any player could make a quest based on either a famous person or a loved one in a few clicks?
                            Eulogy Quest seeks to make it easier for Everquest players to create their own custom quests, and base their 
                            quests on either a famous person, or a player they know from the game.
