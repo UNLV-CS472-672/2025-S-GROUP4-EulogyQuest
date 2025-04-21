@@ -49,7 +49,7 @@ function About() {
                         <p>
                            Why did we make this project? Many EverQuest players enjoy custom quests that they either download or
                            make, but what if any player could make a quest based on either a famous person or a loved one in a few clicks?
-                           Eulogy Quest seeks to make it easier for Everquest players to create their own custom quests, and base their 
+                           EulogyQuest seeks to make it easier for EverQuest players to create their own custom quests, and base their 
                            quests on either a famous person, or a player they know from the game.
                         </p>
                     <h1 style={{ fontSize: '2rem' }}>How?</h1>    
