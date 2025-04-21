@@ -54,7 +54,9 @@ function About() {
                         </p>
                     <h1 style={{ fontSize: '2rem' }}>How?</h1>    
                         <p>
-                            The website has 2 sections: Famous Person Quest and Honored One Quest.
+                            The website has 2 sections: 
+                            <Link to="/famous-person"> Famous Person Quest</Link> and 
+                            <Link to="/honored-one"> Honored One Quest</Link>.
                         </p>
                         <p>
                             In the Famous Person Quest section, you can enter the name of a famous person, and press enter to let the process begin.
