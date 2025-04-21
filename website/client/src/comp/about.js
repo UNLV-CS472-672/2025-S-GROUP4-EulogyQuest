@@ -60,7 +60,7 @@ function About() {
                         </p>
                         <p>
                             In the Famous Person Quest section, you can enter the name of a famous person, and press enter to let the process begin.
-                            Using ChatGPT, a custom-made quest will be generated and added to the Eulogy Quest server on THJ, and would 
+                            Using ChatGPT, a custom-made quest will be generated and added to the Eulogy Quest server on EQEmulator using the RoF2 client, and would 
                             be ready to play.
                         </p>
                         <p>
