@@ -44,6 +44,7 @@ def load_npcs_from_json(json_path):
 
     return data.get("npc_scripting", [])
 
+
 def load_items_from_json(json_path):
     with open(json_path) as f:
         data = json.load(f)
@@ -249,6 +250,7 @@ def main():
     unused_ids = set(RESERVED_IDS) - used_ids
 
     # disable the spawns of the unused id spots
+
     for npc_id in sorted(unused_ids):
         print(f"\nDisabling unused NPC slot at ID {npc_id}")
         sql = generate_disable_spawn_sql(npc_id)
