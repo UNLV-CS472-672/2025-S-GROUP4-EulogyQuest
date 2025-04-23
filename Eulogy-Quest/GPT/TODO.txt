@@ -1,0 +1,20 @@
+There needs to be files created named npc1_task.txt, npc2_task.txt, etc.
+These npc*_task.txt files should provide the same VERY basic quest description that
+ghost_task.txt provided for [honored_target].
+
+Each npc*_task.txt's contents are used in the MVP quest, simply inserting the text dump into the NPCs 'hail' response in their perl file.
+
+Once all _task files exist, we can take each _task and re-run GPT to create a better story-line. This can be done with or without the click-text implemented. I'd rather have a decent story before a working [click-text] quest dialog-chain.
+
+Also on the TODO list is providing two named items per NPC (including the ghost).
+There should be: `ghost_delivery_item.txt` (already done-ish).
+                 `ghost_reward_item.txt`
+                 `npc1_delivery_item.txt`
+                 `npc1_reward_item.txt`
+                 `npc2_delivery_item.txt`
+                 `npc2_reward_item.txt`
+                 `npc3_delivery_item.txt`
+                 `npc3_reward_item.txt`
+                 `npc4_delivery_item.txt`
+                 `npc4_reward_item.txt`   (this reward item gets turned-in @ ghost)
+
