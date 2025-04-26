@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import SubNavBar from './SubNavBar';
+import backgroundImage from '../assets/img/Famous_Person_background.jpg';
+import "./Generatequest.css";  //reusing :D
 
 
 function FamousPerson() {
@@ -29,33 +30,38 @@ function FamousPerson() {
             setRet(false);
         }
     }
-    
+
     return (
-        
-        <div >
-            <SubNavBar />
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "50vh", textAlign: "center" }}>
-            <h1>Famous Person</h1>
-            <p>Enter a famous person to generate a quest. This will be generated using ChatGPT</p>
-            <input
-                type="text"
-                placeholder="Enter a famous person"
-                value={Input}
-                onChange={(e) => SetInput(e.target.value)}
-            />
-            <div style={{ marginBottom: "10px" }}></div>
-            {Ret === false ? (
-                      <p style={{ color: 'red' }}>{message}</p>
-                    ) : (
-                      <p style={{ color: 'limegreen' }}>{message}</p>
-                    )}
-            {/* response mechanism to user check input */}
-            {/* {response && (
-                    <>
-                        <p><strong>Name:</strong> {response.famous_person}</p>
-                    </>
-                )} */}
-            <button onClick={handleSubmit}>Submit</button>
+        <div className="split-container">
+            <div className="split-section"
+                style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <div className="section-title-container">
+                    <h2 className="section-title" style={{ fontFamily: "Georgia, serif" }}>Famous Person</h2>
+                </div>
+                <p className="section-description" style={{ fontFamily: "Helvetica, Arial, sans-serif" }}>
+                    Enter a famous person to generate a quest. This will be generated using ChatGPT
+                </p>
+                <input
+                    type="text"
+                    placeholder="Enter a famous person"
+                    value={Input}
+                    onChange={(e) => SetInput(e.target.value)}
+                    style={{
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "2px solid black",
+                        fontSize: "1.2rem",
+                        marginBottom: "1rem",
+                        width: "30%"
+                    }}
+                />
+                <div style={{ marginBottom: "10px" }}></div>
+                {Ret === false ? (
+                    <p style={{ color: 'red' }}>{message}</p>
+                ) : (
+                    message && <p style={{ color: 'limegreen' }}>{message}</p>
+                )}
+                <button className="quest-button" onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     );
