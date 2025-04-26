@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
+#
 # ai-gen start (Chat-GPT 4o-mini-high, ?)
 # ?= much re-prompting; final result copy/pasted
 #
-#!/usr/bin/env python3
 # create-quest.py
 # ----------------
 # Master script to orchestrate the creation of a quest:
