@@ -1,5 +1,6 @@
 import React from "react";
 import eulogyLogo from "../assets/img/EQ-halfling-tombstone.png";
+import { Link } from "react-router-dom";
 
 // This is the project description.
 const presentationLink = "https://docs.google.com/presentation/d/1S0enStuspSFOCA47sYQGOw54QvP8QmfZr2Ybn5IPQbA/edit?slide=id.g33e6dbe26d6_0_10#slide=id.g33e6dbe26d6_0_10"
