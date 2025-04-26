@@ -1,5 +1,6 @@
 import React from "react";
 import SubNavBar from "./SubNavBar";
+import { useState } from 'react';
 import axios from 'axios';
 import honoredBackground from "../assets/img/MoH-US-Army-shopped_2.jpg"
 import "./Generatequest.css"
@@ -10,8 +11,8 @@ function HonoredOne() {
     const [name, setName] = React.useState("");
     const [file, setFile] = React.useState(null);
     const [text, setText] = React.useState('');
-    const [message_name, setMessage_name] = React.useState("");
-    const [message_logs, setMessage_logs] = React.useState('');
+    const [Ret, setRet] = useState(true);
+    const [message, setMessage] = React.useState("");
 
     const handleSubmit = async () => {
         if (!name) {
@@ -29,9 +30,13 @@ function HonoredOne() {
                         message_name: name,
                         message_logs: fileContent,
                     });
-                    console.log("Response from server:", response.data);
+                    console.log("Response from server:", response.data)
+                    setMessage("Sucessfully receieved");
+                    setRet(true);;
                 } catch (error) {
                     console.error("Error sending prompt:", error);
+                    setMessage("Unsuccessful, please try again");
+                    setRet(false);
                 }
             };
             reader.readAsText(file);
@@ -97,6 +102,11 @@ function HonoredOne() {
                             }}
                         />
                     </div>
+                            {Ret === false ? (
+                            <p style={{ color: 'red' }}>{message}</p>
+                        ) : (
+                            message && <p style={{ color: 'limegreen' }}>{message}</p>
+                        )}
                         <div style={{ marginTop: "20px"}}>
                             <button 
                                 className= "quest-button"
