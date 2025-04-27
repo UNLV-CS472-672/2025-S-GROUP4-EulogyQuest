@@ -5,13 +5,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 
+TITLE_FONT_SIZE = 28
+LABEL_FONT_SIZE = 24
+TICK_FONT_SIZE = 20
+LEGEND_FONT_SIZE = 20
+
 # Project start date - uses the week first PR made by our group
-# Weeks start on Tuesdays b/c Final presentation is on Tuesday
-projectStart = datetime(2025, 3, 4)
+# Weeks start on Thursdays - DP3 is due on Wednesday
+projectStart = datetime(2025, 3, 6)
 weekCount = list(range(1, ((datetime.today() - projectStart).days // 7) + 1))
 
 def githubActivity(names, prs):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(layout='tight')
 
     # Process data - Convert dates to weeks relative to and get count of prs 
     for i, userdata in enumerate(prs):
@@ -20,18 +25,20 @@ def githubActivity(names, prs):
             prs[i][j] = ((datetime.strptime(prs[i][j], '%Y-%m-%d') - projectStart).days // 7) + 1
         prs[i] = Counter(prs[i])
         weeklyCount = [prs[i].get(week, 0) for week in weekCount]
-        ax.plot(weekCount, weeklyCount, label=names[i])
+        ax.plot(weekCount, weeklyCount, label=names[i], linewidth=3)
 
-    ax.set_xlabel('Week')
+    ax.set_xlabel('Week', fontsize=LABEL_FONT_SIZE)
     ax.xaxis.set_major_locator(MaxNLocator(integer=True))
-    ax.set_ylabel('Pull Requests')
+    ax.set_ylabel('Pull Requests', fontsize=LABEL_FONT_SIZE)
     ax.yaxis.set_major_locator(MaxNLocator(integer=True))
-    ax.set_title('Weekly PR Activity')
-    ax.legend()
+
+    ax.set_title('Weekly PR Activity', fontsize=TITLE_FONT_SIZE)
+    ax.tick_params(labelsize=TICK_FONT_SIZE)
+    ax.legend(fontsize=LEGEND_FONT_SIZE)
     plt.show()
 
 def memberContributions(names, prs, reviews, issues, comments):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(layout='tight')
     xAxis = np.arange(len(names))
     width = 0.2
 
@@ -41,29 +48,35 @@ def memberContributions(names, prs, reviews, issues, comments):
     ax.bar(xAxis+(1.5*width), comments, width=width, label='Issue-Comments')
 
     ax.set_xticks(xAxis, names)
-    ax.set_xlabel('Name')
-    ax.set_ylabel('Contributions')
+    ax.set_xlabel('Name', fontsize=LABEL_FONT_SIZE)
+    ax.set_ylabel('Contributions', fontsize=LABEL_FONT_SIZE)
     ax.yaxis.set_major_locator(MaxNLocator(integer=True))
-    ax.set_title('Individual Contributions')
-    plt.legend()
+
+    ax.set_title('Individual Contributions', fontsize=TITLE_FONT_SIZE)
+    ax.tick_params(labelsize=TICK_FONT_SIZE)
+    plt.legend(fontsize=LEGEND_FONT_SIZE)
     plt.show()
 
 def filesChanged(names, files):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(layout='tight')
     ax.bar(names, files, label='Files Changed')
 
-    ax.set_xlabel('Name')
-    ax.set_ylabel('Files Changed')
-    ax.set_title('Files Changed by Each Member')
+    ax.set_xlabel('Name', fontsize=LABEL_FONT_SIZE)
+    ax.set_ylabel('Files Changed', fontsize=LABEL_FONT_SIZE)
+
+    ax.set_title('Files Changed by Each Member', fontsize=TITLE_FONT_SIZE)
+    ax.tick_params(labelsize=TICK_FONT_SIZE)
     plt.show()
 
 def locChanged(names, loc):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(layout='tight')
     ax.bar(names, loc, label='LOC Changed', log=True)
 
-    ax.set_xlabel('Name')
-    ax.set_ylabel('Lines of Code Changed')
-    ax.set_title('Lines of Code Changed by Each Member')
+    ax.set_xlabel('Name', fontsize=LABEL_FONT_SIZE)
+    ax.set_ylabel('Lines of Code Changed', fontsize=LABEL_FONT_SIZE)
+
+    ax.set_title('Lines of Code Changed by Each Member', fontsize=TITLE_FONT_SIZE)
+    ax.tick_params(labelsize=TICK_FONT_SIZE)
     plt.show()
 
 if __name__ == '__main__':
