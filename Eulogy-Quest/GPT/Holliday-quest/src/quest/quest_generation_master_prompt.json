@@ -1,0 +1,5 @@
+{
+  "title": "Quest Generation Master Prompt",
+  "description": "Use this prompt to instruct GPT to load and apply all structural and stylistic rules across the three uploaded files.",
+  "prompt": "I\u2019ve uploaded `GPT_quest_gen_prompt.json`, `dialogue_structure.json`, and `quest_generation_wrapper.json`.\nPlease read and follow all structural and stylistic rules described in those files.\nNow generate a full JSON-formatted EverQuest quest for the honored_target = 'Doc Holliday'.\nBegin by creating the complete quest scaffold, and ask me to confirm before implementing each NPC."
+}

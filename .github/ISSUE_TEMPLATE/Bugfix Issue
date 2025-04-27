@@ -1,0 +1,28 @@
+---
+name: "Bugfix Issue"
+about: "Report a bug that needs to be fixed. Please provide detailed information to help us resolve the issue."
+title: "[Bugfix] "
+labels: bug
+assignees: NAME
+---
+
+## Describe the Bug
+_Concise description of the bug and how it negatively effects the gaming environment._
+
+## Repro Steps
+_What are the steps to reproduce this bug?_
+
+## Steps to Fix the bug
+_List the steps needed to fix the bug:_
+
+## Expected Behavior
+_A clear and concise description of what you expected to happen._
+
+## Screenshots
+_If applicable, add screenshots to help explain your problem._
+
+## Environment Details
+- **Folders/Files changed:** 
+
+## Additional Context
+_Add any other context about the problem here (e.g., error logs, stack traces, etc.)._

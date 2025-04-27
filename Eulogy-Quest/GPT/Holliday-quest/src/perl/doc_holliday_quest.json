@@ -1,0 +1,303 @@
+{
+  "honored_target": "Doc Holliday",
+  "famous_quote": "I'm your huckleberry.",
+  "story": "In 1881, John 'Doc' Holliday stood beside Wyatt Earp at the O.K. Corral in Tombstone, Arizona. A gambler, a gunslinger, and a former dentist, Holliday was wracked with tuberculosis but chose loyalty over safety. The thirty-second gunfight became legend, but it was Doc\u2019s quiet sacrifice and steadfast support for a friend that carved his name into history. The cost of friendship, the edge of law, and the pain behind a smile \u2014 these are the truths Doc carried.",
+  "npc_scripting": [
+    {
+      "name": "Holliday's ghost",
+      "npc_id": 2000700,
+      "appearance": {
+        "face": 2,
+        "hair": 1,
+        "hair_color": "grey",
+        "eye_color": "hazel",
+        "facial_hair": "mustache",
+        "texture": 1,
+        "helm_texture": 1,
+        "armor_tint": [
+          200,
+          200,
+          200
+        ]
+      },
+      "location": {
+        "zone": "northro",
+        "description": "A pale figure lounges in the shadows of a crumbled saloon post, a spectral playing card flickering in his hand.",
+        "x": -1100,
+        "y": 420,
+        "z": 18,
+        "heading": 270.0,
+        "outdoor": true
+      },
+      "dialogue": {
+        "hail": "Did the wind tell you I was here? Or did you [feel the weight of the wager]?",
+        "[feel the weight of the wager]": "The past don\u2019t rest. It shuffles and draws. Four souls carry my echoes \u2014 [Ada], [Dunne], [Crowley], and [Wren].",
+        "[Ada]": "She still holds the chip I never folded. It should\u2019ve stayed buried.",
+        "[offer]": "The hands were always stacked, but you played \u2018em fair. You brought back the parts I lost \u2014 not to the law, but to me.",
+        "parting-text": "Start with Ada Larkin in South Karana. She still guards the bet I never claimed."
+      },
+      "required_offer": {
+        "name": "4 Memory Fragments",
+        "id": 97000
+      },
+      "gives_item": {
+        "name": "Huckleberry Coin",
+        "id": 97001
+      },
+      "legacy_role": "ghost of defiance, loyalty, and the cost of grit",
+      "first_name": "Hollidays",
+      "surname": "ghost"
+    },
+    {
+      "name": "Ada Larkin",
+      "npc_id": 2000701,
+      "appearance": {
+        "face": 4,
+        "hair": 2,
+        "hair_color": "auburn",
+        "eye_color": "green",
+        "facial_hair": "none",
+        "texture": 2,
+        "helm_texture": 0,
+        "armor_tint": [
+          180,
+          160,
+          130
+        ]
+      },
+      "location": {
+        "zone": "southkarana",
+        "description": "A woman in a faded shawl stares across the plains, rubbing a worn chip between her fingers.",
+        "x": 710,
+        "y": -650,
+        "z": 27,
+        "heading": 90.0,
+        "outdoor": true
+      },
+      "dialogue": {
+        "hail": "The bet was placed before you were born, stranger. You here to [settle old scores]?",
+        "[settle old scores]": "Doc tossed his chip to me the night before the shooting. Said he didn\u2019t plan to use it. A [weeping outlaw] stole it from my hand before dawn.",
+        "[weeping outlaw]": "He camps near the jagged stones by the southern trail \u2014 sobbing into a flask. He won\u2019t fight. But he won\u2019t give it up easy either.",
+        "[Tarnished Poker Chip]": "Still warm with memory\u2026 and regret.",
+        "return-line": "I held it long enough. Let it jingle in his pocket again.",
+        "parting-text": "You\u2019ll find Dunne behind the Freeport saloon. He still limps from the deal he broke."
+      },
+      "required_offer": {
+        "name": "Tarnished Poker Chip",
+        "id": 97002
+      },
+      "gives_item": null,
+      "legacy_role": "gambling, loss, and emotional residue of farewell",
+      "first_name": "Ada",
+      "surname": "Larkin"
+    },
+    {
+      "name": "Mister Dunne",
+      "npc_id": 2000702,
+      "appearance": {
+        "face": 6,
+        "hair": 3,
+        "hair_color": "black",
+        "eye_color": "brown",
+        "facial_hair": "goatee",
+        "texture": 1,
+        "helm_texture": 0,
+        "armor_tint": [
+          120,
+          110,
+          100
+        ]
+      },
+      "location": {
+        "zone": "freeportw",
+        "description": "A hunched man leans on a broken cane behind the saloon, tracing boot scuffs into the dirt.",
+        "x": -160,
+        "y": -280,
+        "z": -10,
+        "heading": 180.0,
+        "outdoor": false
+      },
+      "dialogue": {
+        "hail": "I never bent the truth \u2014 just curved it where I needed. You come to [reclaim what cracked]?",
+        "[reclaim what cracked]": "The cane snapped when the shots rang out. A [smiling enforcer] pocketed the handle, said it brought him luck.",
+        "[smiling enforcer]": "He struts near the boardwalk, tossing it end over end. His kind always grins before they draw.",
+        "[Splintered Cane Handle]": "He said it whispered Doc\u2019s last breath. I just remember the splinters.",
+        "return-line": "Let him have it back. And may it jab his heel for every lie I told.",
+        "parting-text": "Look for Pastor Crowley in Qeynos. He never forgave Doc\u2019s sins \u2014 or his own."
+      },
+      "required_offer": {
+        "name": "Splintered Cane Handle",
+        "id": 97003
+      },
+      "gives_item": null,
+      "legacy_role": "regret, smooth lies, and broken loyalties",
+      "first_name": "Mister",
+      "surname": "Dunne"
+    },
+    {
+      "name": "Pastor Crowley",
+      "npc_id": 2000703,
+      "appearance": {
+        "face": 5,
+        "hair": 1,
+        "hair_color": "white",
+        "eye_color": "blue",
+        "facial_hair": "beard",
+        "texture": 3,
+        "helm_texture": 0,
+        "armor_tint": [
+          160,
+          160,
+          200
+        ]
+      },
+      "location": {
+        "zone": "qeynos",
+        "description": "A solemn preacher stands outside a leaning chapel, holding a handkerchief stained red.",
+        "x": 250,
+        "y": -120,
+        "z": 5,
+        "heading": 0.0,
+        "outdoor": false
+      },
+      "dialogue": {
+        "hail": "Blood dries. But memory stains forever. Are you here to [carry the burden of mercy]?",
+        "[carry the burden of mercy]": "Doc gave me the cloth after his last confession. A [grieving squire] snatched it from the altar, claiming absolution.",
+        "[grieving squire]": "He kneels beside the fountain. Whispers names no one remembers. Don\u2019t wake him \u2014 he weeps in cycles.",
+        "[Blood-Streaked Handkerchief]": "It still smells of whiskey and iron. I never found peace in it.",
+        "return-line": "May it rest with him, not me. I\u2019ve recited its weight too long.",
+        "parting-text": "Seek Sylas Wren in Lavastorm. If anyone kept Doc\u2019s pain hot, it was him."
+      },
+      "required_offer": {
+        "name": "Blood-Streaked Handkerchief",
+        "id": 97004
+      },
+      "gives_item": null,
+      "legacy_role": "redemption, burdened faith, and uneasy forgiveness",
+      "first_name": "Pastor",
+      "surname": "Crowley"
+    },
+    {
+      "name": "Sylas Wren",
+      "npc_id": 2000704,
+      "appearance": {
+        "face": 3,
+        "hair": 4,
+        "hair_color": "black",
+        "eye_color": "gray",
+        "facial_hair": "none",
+        "texture": 2,
+        "helm_texture": 1,
+        "armor_tint": [
+          220,
+          140,
+          90
+        ]
+      },
+      "location": {
+        "zone": "lavastorm",
+        "description": "A gaunt man watches the lava flow from behind scorched rocks, tools strapped to a melted satchel.",
+        "x": -450,
+        "y": 120,
+        "z": 30,
+        "heading": 0.0,
+        "outdoor": true
+      },
+      "dialogue": {
+        "hail": "Heat tempers steel. And men. What you holding \u2014 truth or myth? Ready to [pull the tooth]?",
+        "[pull the tooth]": "Doc left his forceps here after cauterizing a wound. A [burned rogue] claimed it was blessed and fled into the fire.",
+        "[burned rogue]": "She dances near the brimstone spires, wrapped in ash and ash alone. Trick is, she never stops moving.",
+        "[Dentist\u2019s Gold Forceps]": "Still gleam through the soot. Still bite when clenched.",
+        "return-line": "He carved more than teeth with these. Give \u2018em back to the only hand steady enough to wield \u2018em.",
+        "parting-text": "Return to Holliday\u2019s ghost in North Ro. You\u2019ve done the rounds. The deck is full."
+      },
+      "required_offer": {
+        "name": "Dentist\u2019s Gold Forceps",
+        "id": 97005
+      },
+      "gives_item": null,
+      "legacy_role": "pain management, precision, and relentless fire",
+      "first_name": "Sylas",
+      "surname": "Wren"
+    }
+  ],
+  "quest_reward_items": [
+    {
+      "name": "Huckleberry Coin",
+      "id": 97001
+    }
+  ],
+  "required_offer_items": {
+    "Ada Larkin": {
+      "name": "Tarnished Poker Chip",
+      "id": 97002
+    },
+    "Mister Dunne": {
+      "name": "Splintered Cane Handle",
+      "id": 97003
+    },
+    "Pastor Crowley": {
+      "name": "Blood-Streaked Handkerchief",
+      "id": 97004
+    },
+    "Sylas Wren": {
+      "name": "Dentist\u2019s Gold Forceps",
+      "id": 97005
+    }
+  },
+  "force_obtained_items": {},
+  "item_adjectives": [
+    "tarnished",
+    "splintered",
+    "blood-streaked",
+    "gold-plated"
+  ],
+  "nsfw_setting": false,
+  "scenes_and_settings": [
+    {
+      "scene": "An overturned poker table",
+      "setting": "Splinters and cards mingle in dust. A bullet hole marks the wall behind."
+    },
+    {
+      "scene": "The outskirts of a dusty chapel",
+      "setting": "Buzzards circle in slow arcs. Sun-bleached wood leans under the burden of silence."
+    },
+    {
+      "scene": "An alley behind a saloon",
+      "setting": "Footsteps echo between cracked barrels and dried blood along the wall."
+    },
+    {
+      "scene": "A forgotten dentist's parlor",
+      "setting": "The chair still tilts. Rusted implements rest under cloudy jars."
+    }
+  ],
+  "setting_locations": [
+    "northro",
+    "southkarana",
+    "freeportw",
+    "qeynos",
+    "lavastorm"
+  ],
+  "npc_locations": {
+    "Holliday's ghost": "northro",
+    "Ada Larkin": "southkarana",
+    "Mister Dunne": "freeportw",
+    "Pastor Crowley": "qeynos",
+    "Sylas Wren": "lavastorm"
+  },
+  "npc_method_of_receipt": {
+    "Holliday's ghost": "give",
+    "Ada Larkin": "give",
+    "Mister Dunne": "give",
+    "Pastor Crowley": "give",
+    "Sylas Wren": "give"
+  },
+  "item_quest_chain": {
+    "Huckleberry Coin": [
+      "Ada Larkin",
+      "Mister Dunne",
+      "Pastor Crowley",
+      "Sylas Wren"
+    ]
+  }
+}

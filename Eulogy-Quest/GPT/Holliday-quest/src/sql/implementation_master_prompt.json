@@ -1,0 +1,3 @@
+{
+  "prompt": "I’ve uploaded [quest]_implementation.json and sql_prompt.json.\nPlease apply the SQL prompt to generate a one-shot .sql file using all insert groups (npc_type, spawngroup, spawnentry, spawn2)."
+}

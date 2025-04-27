@@ -1,0 +1,41 @@
+# ai-gen start (ChatGPT-4o, 1)
+name: Perl Critic
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  perl_critic:
+    name: 🧠 Perl::Critic
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Communicate start
+        run: echo "Perl Critic workflow started!"
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install Perl::Critic
+        run: |
+          cpanm --notest Perl::Critic
+
+      - name: Run Perl::Critic
+        run: |
+          echo "Running Perl::Critic..."
+          FILES=$(find . \( -name '*.pl' -o -name '*.pm' -o -name '*.t' \))
+          if [ -n "$FILES" ]; then
+            echo "$FILES" | tr '\n' '\0' \
+              | xargs -0 perlcritic --verbose '%f:%l:%c %m (%p) [Severity: %s]' --severity 3
+          else
+            echo "No Perl files to check."
+          fi
+
+# ai-gen end

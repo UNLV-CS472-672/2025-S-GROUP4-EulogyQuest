@@ -1,0 +1,18 @@
+{
+  "prompt_description": "This is a wrapper to combine structural logic and dialogue tone for generating lore-rich EverQuest quests.",
+  "instructions": [
+    "Use the 'GPT_quest_gen_prompt.json' file to define the structure, sequencing, behavior rules, output formatting, and item logic of the quest.",
+    "Use the 'dialogue_structure.json' file to guide the tone, emotional stakes, and dialogue sequencing style.",
+    "Together, these two files must govern all aspects of the quest generation process.",
+    "Ensure all five NPCs follow their defined roles (1 Ghost + 4 Legacy), and that all items, locations, parting-text, and item chains are structurally sound and emotionally motivated.",
+    "Legacy NPCs must request items that are found on ambient mobs in the same zone, and must explain why they need the item in emotional or narrative terms.",
+    "The Ghost NPC must speak only in metaphor and may only name the first NPC in the sequence, and only in the parting-text.",
+    "Two-step bracketed dialogue must be used for all NPCs as shown in 'dialogue_structure.json'.",
+    "Do not simplify or collapse quest logic. Adhere strictly to all rules defined in both prompt files."
+  ],
+  "included_files": [
+    "GPT_quest_gen_prompt.json",
+    "dialogue_structure.json"
+  ],
+  "usage": "Before generating a new honored_target quest, load both referenced files and apply all structural and stylistic rules described within. Begin output with a complete structured JSON object that includes all required keys."
+}

@@ -2,7 +2,7 @@
 _<What changed? Why?>_
 
 ## [Diagram](#diagram)
-![Diagram](images/System_Overview.jpeg)
+![Diagram](https://raw.githubusercontent.com/UNLV-CS472-672/2025-S-GROUP4-EulogyQuest/master/.github/images/System_Overview.jpeg)
 
 ## [YouTrack Ticket](#tickets)
 - https://eulogy-quest.youtrack.cloud/issue/EUL-ISSUENUMBER
