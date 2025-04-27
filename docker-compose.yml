@@ -279,6 +279,19 @@ services:
       - backend
     command: npm start
 
+  ##################################################
+  # EulogyQuest Website — SPA Static Host
+  ##################################################
+  eulogy-spa:
+    build:
+      context: ./website/client
+      dockerfile: Dockerfile.static
+    ports:
+      - "8080:80"                        
+    volumes:
+      - ./server/quests:/usr/share/nginx/html/quests:ro
+    networks:
+      - backend
 
 networks:
   backend:
