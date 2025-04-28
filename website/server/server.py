@@ -40,7 +40,6 @@ def not_found(e):
 	return send_from_directory(app.static_folder, 'index.html')
 
 # /* ai-gen start (ChatGPT-4, 2) */
-@app.route('/famous-person', methods=['POST'])  
 def post_famous_person():
     data = request.get_json()
     famous_person = data.get('message') if data else None
@@ -48,30 +47,30 @@ def post_famous_person():
     if not famous_person or not famous_person.strip():
         return jsonify({'error': 'Invalid request: "message" field is required and cannot be empty'}), 400
 
-    # Example response for the famous person
     response = {
         'famous_person': famous_person,
         'quest': f"Create a quest inspired by {famous_person}."
     }
 
     try:
-	file_data = json.dumps({'famous_person': famous_person,'quest': f"Create a quest inspired by {famous_person}."}, indent=2)
+        file_data = json.dumps({
+            'famous_person': famous_person,
+            'quest': f"Create a quest inspired by {famous_person}."
+        }, indent=2)
 
+        ftp = ftplib.FTP(ftp_server)
+        ftp.login(user=ftp_user, passwd=ftp_pass)
 
-	ftp = ftplib.FTP(ftp_server)
-	ftp.login(user=ftp_user, passwd=ftp_pass)
+        with io.BytesIO(file_data.encode('utf-8')) as memfile:
+            ftp.storbinary('STOR famous_person_quest.json', memfile)
 
-	with io.BytesIO(file_data.encode('utf-8')) as memfile:
-	    ftp.storbinary('STOR famous_person_quest.json', memfile)
+        ftp.quit()
 
-	ftp.quit()
-
-	return jsonify(response), 200
-
+        return jsonify(response), 200
 
     except Exception as e:
-	print(f"FTP upload error: {e}")
-	return jsonify({'error': str(e)}), 500
+        print(f"FTP upload error: {e}")
+        return jsonify({'error': str(e)}), 500
 
 
 # /* end of ai-get */
