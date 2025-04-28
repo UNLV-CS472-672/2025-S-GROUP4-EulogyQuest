@@ -5,6 +5,7 @@
 
 import os
 import sys
+import logging
 import subprocess
 from dotenv import load_dotenv
 
@@ -28,6 +29,11 @@ HARDCODED_LOCATIONS = [
 
 QUEST_ZONE = "tutorialb"
 
+def setup_logging():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s",
+    )
 
 def extract_names_by_file_suffix(path, suffix):
     results = []
@@ -43,10 +49,12 @@ def stream_sql_to_mariadb(sql):
         "docker-compose", "exec", "-T", "mariadb", "mysql",
         f"-u{DB_USER}", f"-p{DB_PASS}", DB_NAME
     ]
-    subprocess.run(cmd, input=sql.encode("utf-8"))
-
+    result = subprocess.run(cmd, input=sql.encode("utf-8"), capture_output=True)
+    return result
 
 def main():
+    logger = logging.getLogger(os.path.basename(__file__))
+
     if len(sys.argv) < 2:
         print("Usage: python3 updateNPCs.py <quest_name>")
         return
@@ -74,7 +82,12 @@ def main():
         REPLACE INTO spawnentry (spawngroupID, npcID, chance)
         VALUES ({npc_id}, {npc_id}, 100);
         """
-        stream_sql_to_mariadb(sql)
+        result = stream_sql_to_mariadb(sql)
+        if result.returncode != 0:
+            logger.error(f"Failed to stream NPC SQL: {result.stderr.decode()}")
+            sys.exit(1)
+        else:
+            logger.info(f"Streamed NPC SQL to MariaDB successfully: '{npc}', npc_id: '{npc_id}'")
 
     for i, item in enumerate(item_names):
         if i >= len(RESERVED_ITEM_IDS):
@@ -85,15 +98,26 @@ def main():
         REPLACE INTO items (id, name, aagi, ac, accuracy, classes, races, icon, loregroup, magic, weight, size, itemtype, favor)
         VALUES ({item_id}, '{item}', 0, 5, 0, 65535, 65535, 128, 0, 1, 1, 1, 10, 0);
         """
-        stream_sql_to_mariadb(sql)
+        result = stream_sql_to_mariadb(sql)
+        if result.returncode != 0:
+            logger.error(f"Failed to stream item SQL: {result.stderr.decode()}")
+            sys.exit(1)
+        else:
+            logger.info(f"Streamed item SQL to MariaDB successfully: '{item}', item_id: '{item_id}'")
 
     for i in range(len(npc_names), len(RESERVED_IDS)):
         npc_id = RESERVED_IDS[i]
         sql = f"UPDATE spawnentry SET chance=0 WHERE npcID={npc_id} AND spawngroupID={npc_id};"
-        stream_sql_to_mariadb(sql)
+        result = stream_sql_to_mariadb(sql)
+        if result.returncode != 0:
+            logger.error(f"Failed to stream spawnentry SQL: {result.stderr.decode()}")
+            sys.exit(1)
+        else:
+            logger.info(f"Streamed spawnentry SQL to MariaDB successfully for npc id: '{npc_id}'")
 
 
 if __name__ == "__main__":
+    setup_logging()
     main()
 
 # ai-gen end
