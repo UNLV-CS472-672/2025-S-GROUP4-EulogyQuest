@@ -60,12 +60,24 @@ def main():
     tutorialb_dir = Path(__file__).parent.parent.parent / "server" / "quests" / "tutorialb"
     tutorialb_dir.mkdir(parents=True, exist_ok=True)
 
-    for npc in npc_names:
+    for index, npc in enumerate(npc_names):
+
+        #try to find quest text for this npc (npc1_task.txt, npc2_task.txt, etc)
+        file_name = f"npc{index}_task.txt" if index != 0 else "ghost_task.txt"
+        npc_task_path = quest_dir / file_name
+
+        if npc_task_path.exists():
+            quest_text = npc_task_path.read_text(encoding="utf-8").strip()
+            print(f"Using specific quest text for {npc}. file: {file_name}")
+        else:
+            quest_text = quest_text_dump
+            print(f"No custom quest text found for {npc}. Using default quest text.")
+
         output_path = perl_dir / f"{npc}.pl"
         perl_script = f"""
 sub EVENT_SAY {{
   if ($text=~/hail/i) {{
-      quest::say(\"{quest_text_dump}\");
+      quest::say(\"{quest_text}\");
   }}
 }}
 """
