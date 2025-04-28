@@ -1,30 +1,43 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory 
 from flask_cors import CORS
 import pandas as pd
 from datetime import datetime
 from dotenv import load_dotenv
 import os
 import json
-from openai import OpenAI
+import ftplib
 
 load_dotenv()
 # api_key = os.getenv("OPENAI_API_KEY")
 # client = OpenAI(api_key = os.getenv("OPEN_API_KEY"))
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../client/build', static_url_path='/')
+
 CORS(app)
 
-# TODO : Change output from excel to json
-# TODO : present prompt to gpt and get a response in json format
+ftp_server = ""
+ftp_user = ""
+ftp_pass = ""
 
-# TODO : multiple endpoints for different models (one for famous person, one for honored one)
 
+@app.route('/')
+def serve_react():
+    print("STATIC FOLDER PATH:", app.static_folder)
+    print("INDEX PATH:", os.path.join(app.static_folder, 'index.html'))
+    return send_from_directory(app.static_folder, 'index.html')
 
 # this endpoint only recieves ONE json file, and will overwrite the previous one, the task is next
 # we have to get gpt to generate a quest based on the json file we received which should only be 1 file
 # endpoint to get a name from famous person route
 
 output_file_name = "before_ai.json"
+
+app.route('/')
+def serve_react():
+	return send_from_directory(app.static_folder, 'index.html')
+
+def not_found(e):
+	return send_from_directory(app.static_folder, 'index.html')
 
 # /* ai-gen start (ChatGPT-4, 2) */
 @app.route('/famous-person', methods=['POST'])  
@@ -41,62 +54,27 @@ def post_famous_person():
         'quest': f"Create a quest inspired by {famous_person}."
     }
 
-    # json file name
-    with open(output_file_name, "w") as file:
-        json.dump({"famous_person": famous_person}, file)
+    try:
+	file_data = json.dumps({'famous_person': famous_person,'quest': f"Create a quest inspired by {famous_person}."}, indent=2)
 
 
-    # # build GPT prompt
-    # prompt = f"""
-    # Create a fun, emotionally meaningful EverQuest-style quest inspired by {famous_person}.
-    # The quest should have:
-    # - A title
-    # - A brief description of why it's meaningful
-    # - 3-5 objectives the player must complete
-    # - A quest reward
+	ftp = ftplib.FTP(ftp_server)
+	ftp.login(user=ftp_user, passwd=ftp_pass)
 
-    # Format the output in structured JSON like this:
-    # {{
-    #     "title": "...",
-    #     "description": "...",
-    #     "objectives": ["...", "..."],
-    #     "reward": "..."
-    # }}
-    # """
+	with io.BytesIO(file_data.encode('utf-8')) as memfile:
+	    ftp.storbinary('STOR famous_person_quest.json', memfile)
 
-    # try:
-    #     response = client.chat.completions.create(
-    #         model = "gpt-3.5-turbo",
-    #         messages=[
-    #             {"role": "system", "content": "You are a creative quest designer for the fantasy MMORPG game EverQuest."},
-    #             {"role": "user", "content": prompt}
-    #         ],
-    #         temperature = 0.7,
-    #         max_tokens = 600
-    #     )
+	ftp.quit()
 
-    #     quest_text = response.choices[0].message.content.strip()
-
-    #     # save input and generated quest
-    #     json_data = {
-    #         "famous_person": famous_person,
-    #         "quest": quest_text
-    #     }
-
-    #     with open("famous_person_with_ai.json", "w") as file:
-    #         json.dump(json_data, file, indent=2)
-
-    #     return jsonify(json_data), 200
-
-    # except Exception as e:
-    #     print(f"OpenAI API error: {e}")
-    #     return jsonify({'error': str(e)}), 500
+	return jsonify(response), 200
 
 
-    return jsonify(response), 200   
+    except Exception as e:
+	print(f"FTP upload error: {e}")
+	return jsonify({'error': str(e)}), 500
+
 
 # /* end of ai-get */
-
 @app.route('/honored_one', methods=['POST'])  
 def post_honored_one():
     data = request.get_json()
