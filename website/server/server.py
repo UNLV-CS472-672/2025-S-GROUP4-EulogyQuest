@@ -1,15 +1,11 @@
 from flask import Flask, request, jsonify, send_from_directory 
 from flask_cors import CORS
-import pandas as pd
-from datetime import datetime
 from dotenv import load_dotenv
 import os
 import json
-import ftplib
+from pathlib import Path
 
 load_dotenv()
-# api_key = os.getenv("OPENAI_API_KEY")
-# client = OpenAI(api_key = os.getenv("OPEN_API_KEY"))
 
 app = Flask(__name__, static_folder='../client/build', static_url_path='/')
 
@@ -19,12 +15,6 @@ ftp_server = ""
 ftp_user = ""
 ftp_pass = ""
 
-
-@app.route('/')
-def serve_react():
-    print("STATIC FOLDER PATH:", app.static_folder)
-    print("INDEX PATH:", os.path.join(app.static_folder, 'index.html'))
-    return send_from_directory(app.static_folder, 'index.html')
 
 # this endpoint only recieves ONE json file, and will overwrite the previous one, the task is next
 # we have to get gpt to generate a quest based on the json file we received which should only be 1 file
@@ -40,6 +30,7 @@ def not_found(e):
 	return send_from_directory(app.static_folder, 'index.html')
 
 # /* ai-gen start (ChatGPT-4, 2) */
+@app.route('/famous-person', methods=['POST'])  
 def post_famous_person():
     data = request.get_json()
     famous_person = data.get('message') if data else None
@@ -47,24 +38,34 @@ def post_famous_person():
     if not famous_person or not famous_person.strip():
         return jsonify({'error': 'Invalid request: "message" field is required and cannot be empty'}), 400
 
-    response = {
-        'famous_person': famous_person,
-        'quest': f"Create a quest inspired by {famous_person}."
-    }
+    # Build filename
+    underscored = "_".join(famous_person.split())
+    filename = f"Eulogyquest_{underscored}.trigger"
+    local_file = Path(filename)
 
     try:
-        file_data = json.dumps({
+        # Create the empty trigger file if it doesn't exist
+        if not local_file.exists():
+            local_file.touch()
+
+        # Build FTP upload URL
+        remote_dir = "tutorialb"  # the directory on FTP server
+        remote_path = f"{remote_dir}/{filename}"
+        url = f"ftp://{ftp_user}:{ftp_pass}@{ftp_server}/{remote_path}"
+
+        # Run curl command to upload
+        cmd = [
+            "curl",
+            "--ftp-pasv",
+            "-T", str(local_file),
+            url
+        ]
+        subprocess.run(cmd, check=True)
+
+        response = {
             'famous_person': famous_person,
-            'quest': f"Create a quest inspired by {famous_person}."
-        }, indent=2)
-
-        ftp = ftplib.FTP(ftp_server)
-        ftp.login(user=ftp_user, passwd=ftp_pass)
-
-        with io.BytesIO(file_data.encode('utf-8')) as memfile:
-            ftp.storbinary('STOR famous_person_quest.json', memfile)
-
-        ftp.quit()
+            'quest': f"Created trigger for {famous_person}."
+        }
 
         return jsonify(response), 200
 
