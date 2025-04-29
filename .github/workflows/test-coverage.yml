@@ -1,6 +1,6 @@
 # ai-gen (ChatGPT-4, 2)
 # Edited example from our labs; used ChatGPT to refine it for our project
-name: CI Workflow  # Name of the workflow
+name: Test Coverage  # Name of the workflow
 
 on:
   push:
