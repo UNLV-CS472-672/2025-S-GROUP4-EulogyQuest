@@ -73,13 +73,15 @@ def main():
     # Construct AI prompt
     prompt = (
         f"You are the ghost of {honored_target} in the world of EverQuest. "
-        "A player has initiated conversation with you. Identify four pieces of information:\n\n"
+        "A player has initiated conversation with you. Identify six pieces of information:\n\n"
         "1. Provide 'ghost_task.txt' describing only the delivery task, its importance, "
         "the item to deliver, the recipient, and the exact EverQuest zone (valid through Planes of Power). "
         "This is internal-use only.\n\n"
         "2. Provide 'ghost_delivery_item.txt' containing only the item name.\n\n"
         "3. Provide 'ghost_delivery_target.txt' containing only the recipient's two-word name.\n\n"
         "4. Provide 'ghost_delivery_target_location.txt' containing only the zone name where the recipient is located.\n"
+        "5. Provide 'ghost_dialog.txt' containing a short in-character paragraph where the ghost explains the quest to the player\n\n"
+        "6. Provide 'ghost_reward.txt' containing only a reward item name (no description, only the name). The ghost doesnt know about this item.\n"
     )
 
     # Query GPT
@@ -100,7 +102,9 @@ def main():
         'ghost_task': [],
         'ghost_delivery_item': [],
         'ghost_delivery_target': [],
-        'ghost_delivery_target_location': []
+        'ghost_delivery_target_location': [],
+        'ghost_dialog': [],
+        'ghost_reward': []
     }
     current = None
     for line in content.splitlines():
@@ -112,6 +116,10 @@ def main():
             current = 'ghost_delivery_target'; continue
         if 'ghost_delivery_target_location.txt' in line:
             current = 'ghost_delivery_target_location'; continue
+        if 'ghost_dialog.txt' in line:
+            current = 'ghost_dialog'; continue
+        if 'ghost_reward.txt' in line:
+            current = 'ghost_reward'; continue
         if current:
             sections[current].append(line)
 
@@ -120,7 +128,9 @@ def main():
         'ghost_task': 'ghost_task.txt',
         'ghost_delivery_item': 'ghost_delivery_item.txt',
         'ghost_delivery_target': 'ghost_delivery_target.txt',
-        'ghost_delivery_target_location': 'ghost_delivery_target_location.txt'
+        'ghost_delivery_target_location': 'ghost_delivery_target_location.txt',
+        'ghost_dialog': 'ghost_dialog.txt',
+        'ghost_reward': 'ghost_reward.txt'
     }
     for key, fname in filenames.items():
         file_path = build_dir / fname
