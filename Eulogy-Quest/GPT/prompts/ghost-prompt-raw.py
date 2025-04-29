@@ -6,11 +6,9 @@ import subprocess
 
 # ----- Ensure we are inside the correct virtual environment -----
 
-# Define path to .venv
 venv_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".venv"))
 venv_python = os.path.join(venv_dir, "bin", "python")
 
-# Relaunch inside venv if not already
 if not sys.executable.startswith(venv_dir):
     if not os.path.exists(venv_python):
         raise FileNotFoundError(f"Virtual environment not found at {venv_python}. Please set up .venv first.")
@@ -42,36 +40,26 @@ if not os.path.exists(env_path):
 
 load_dotenv(dotenv_path=env_path)
 
-# Load OpenAI API key
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     raise ValueError("OPENAI_API_KEY not found in .env file.")
 
-# Create OpenAI client
 client = openai.OpenAI(api_key=openai_api_key)
 
 # ----- Handle honored_target name -----
 
-# Default honored_target name
 default_name = "Christopher Reeve"
 
-# Check if a name was passed as a command-line argument
 if len(sys.argv) > 1:
-    default_name = sys.argv[1]  # Update default_name if argument provided
+    default_name = sys.argv[1]
     print(f"Using honored_target: {default_name}")
 else:
     print(f"No honored_target passed. Using default: {default_name}")
 
-# Set final name for prompt replacement
 name = default_name
 
-# ----- Prompt Template -----
-# deliverables deferred to forthcomming prompts:
-#  specific item id
-#  npc1's location
-#  [click-text]
+# ----- Corrected Prompt Template -----
 
-# --- prompt-v2 ---
 prompt_template = f"""
 You are the ghost of {name}, speaking to me after I have hailed you, saying: "Hail, {name}."
 
@@ -82,7 +70,7 @@ Before you respond to my hail, follow this internal process step-by-step:
 1. Reflect deeply on your life as {name}, reviewing your memories and personal journey.
 2. Identify a specific, concrete accomplishment from your life that was crucial to you. Avoid cliché or well-known achievements; choose something real but unexpected.
 3. Within that accomplishment, find a single critical action — the delivery of an item, a message, or a key deed — that was essential for success. Assume that, in your ghost-memory, this critical step was *never completed*.
-4. Specify clearly the physical item that must be delivered and the real person it must be delivered to.
+4. Specify clearly the physical item that must be delivered, and the full name of the real person it must be delivered to. The name must contain at least a first name and a last name. If the story does not mention a real historical person, invent a fitting full name consistent with the story's historical setting.
 5. Accept in your mind that your spirit is trapped at that unfinished moment in your past.
 
 When you respond, treat the conversation as real and present — I am standing before you.
@@ -94,23 +82,18 @@ Focus on your emotional longing, your half-remembered senses, and the deep need 
 Avoid expository narration; speak to me **directly, as if we are truly there together**.
 """
 
-
-# Replace honored_target in the prompt
-# final_prompt = prompt_template.replace("honored_target", name)
 final_prompt = prompt_template.strip()
 
 # ----- Create dynamic output filename -----
 
-# Sanitize name for safe filenames
 safe_name = name.replace(" ", "_").replace("\"", "").replace("'", "")
-base_filename = f"Ghost-dialog-{safe_name}.txt"
+base_filename = f"Ghost-dialog-{safe_name}-raw.txt"
 output_dir = os.getcwd()
 output_filename = os.path.join(output_dir, base_filename)
 
-# If file already exists, add _1, _2, etc.
 counter = 1
 while os.path.exists(output_filename):
-    output_filename = os.path.join(output_dir, f"Ghost-dialog-{safe_name}_{counter}.txt")
+    output_filename = os.path.join(output_dir, f"Ghost-dialog-{safe_name}-raw_{counter}.txt")
     counter += 1
 
 # ----- Send prompt to GPT and save -----
@@ -126,7 +109,6 @@ try:
 
     ghost_dialog = response.choices[0].message.content.strip()
 
-    # Save response
     with open(output_filename, "w", encoding="utf-8") as f:
         f.write(ghost_dialog)
 
