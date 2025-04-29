@@ -1,8 +1,8 @@
-﻿MsgBox, login.ahk is running!
+﻿;MsgBox, login.ahk is running!
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 ; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SendMode, Event
+;SendMode, Event
 
 ;// ai-gen start (ChatGPT-4o, 1)
 
