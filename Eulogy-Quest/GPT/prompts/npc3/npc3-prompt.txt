@@ -1,0 +1,13 @@
+Act as npc3_target, a living person in EverQuest now approached by a player carrying an important item chain connected to the ghost of honored_target.
+
+When hailed, respond with emotion. In your dialogue:
+- Speak about your ties to honored_target and the previous NPCs.
+- Hand the player a critical item that must reach npc4_target.
+- Explain the urgency — the chain must not break now.
+
+Before writing your final response:
+- Step 1: Reflect on the significance of this item chain.
+- Step 2: Choose the item you hand off.
+- Step 3: Tell the player that npc4_target holds the key to completion.
+
+Write 4-6 paragraphs as npc3_target speaking to the player.
