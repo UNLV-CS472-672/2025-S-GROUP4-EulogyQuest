@@ -64,7 +64,10 @@ while (-not $ready -and $waitTime -lt $timeout) {
     $zoneCountOutput = ssh "$vmUser@$vmIp" "ps aux | grep -v grep | grep '/home/eqemu/server/bin/zone' | wc -l"
     $zoneCount = [int]$zoneCountOutput.Trim()
     
-    if ($zoneCount -ge 25) {
+# was waiting for 25 of 30 zones, but now my local worldserver only brings up an
+# initial 10 for some reason.
+
+    if ($zoneCount -ge 10) {
         $ready = $true
         break
     }
