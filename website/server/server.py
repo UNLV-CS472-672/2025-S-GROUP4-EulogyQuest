@@ -14,9 +14,9 @@ app = Flask(__name__, static_folder='../client/build', static_url_path='/')
 CORS(app)
 
 # FTP Configuration (replace with your actual FTP details or load from env)
-FTP_SERVER = os.getenv('FTP_SERVER') or "your-ftp-server-ip"
-FTP_USER = os.getenv('FTP_USER') or "your-ftp-username"
-FTP_PASS = os.getenv('FTP_PASS') or "your-ftp-password"
+FTP_SERVER = "your-ftp-server-ip"
+FTP_USER = "your-ftp-username"
+FTP_PASS = "your-ftp-password"
 
 # Output file name (used by honored_one route)
 OUTPUT_FILE_NAME = "before_ai.json"
@@ -40,24 +40,31 @@ def post_famous_person():
     if not famous_person or not famous_person.strip():
         return jsonify({'error': 'Invalid request: "message" field is required and cannot be empty'}), 400
 
-    response_data = {
-        'famous_person': famous_person,
-        'quest': f"Create a quest inspired by {famous_person}."
-    }
+    # --- replicate filename format
+    underscored = "_".join(famous_person.split())
+    filename = f"Eulogyquest_{underscored}.trigger"
+    remote_dir = "tutorialb"
 
-    # Attempt FTP Upload
+    file_content = f"Quest trigger for {famous_person}"
+
     try:
-        file_content = json.dumps(response_data, indent=2)
-        
         ftp = ftplib.FTP(FTP_SERVER)
         ftp.login(user=FTP_USER, passwd=FTP_PASS)
 
+        # --- change to correct remote directory
+        ftp.cwd(remote_dir)
+
+        # --- upload in memory
         with io.BytesIO(file_content.encode('utf-8')) as memfile:
-            ftp.storbinary('STOR famous_person_quest.json', memfile)
+            ftp.storbinary(f'STOR {filename}', memfile)
 
         ftp.quit()
 
-        return jsonify(response_data), 200
+        return jsonify({
+            'famous_person': famous_person,
+            'filename_uploaded': f"{remote_dir}/{filename}",
+            'status': 'Upload successful'
+        }), 200
 
     except ftplib.all_errors as e:
         print(f"[FTP ERROR] {e}")
@@ -66,6 +73,7 @@ def post_famous_person():
     except Exception as e:
         print(f"[SERVER ERROR] {e}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
+    
 
 # Honored One Endpoint
 @app.route('/honored_one', methods=['POST'])
