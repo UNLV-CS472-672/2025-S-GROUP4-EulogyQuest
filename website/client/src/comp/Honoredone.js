@@ -84,7 +84,7 @@ function HonoredOne() {
                     <input
                     
                         type="text"
-                        placeholder="Name of Honred One"
+                        placeholder="Name of Honored One"
                         value={name || ""}
                         onChange={(e) => setName(e.target.value)}
                         style={{ width: "500px", padding: "10px", fontSize: "24px", marginBottom: "20px" }}
