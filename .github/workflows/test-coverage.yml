@@ -6,6 +6,7 @@ on:
     paths:
       - 'website/**/*.py'
       - 'tests/**/*.py'
+      - 'Eulogy-Quest/GPT/**/*.py'
       - '.github/workflows/test-coverage.yml'
       - 'Eulogy-Quest/GPT/Holliday-quest/src/perl/**/*.py'
   pull_request:
@@ -13,6 +14,7 @@ on:
     paths:
       - 'website/**/*.py'
       - 'tests/**/*.py'
+      - 'Eulogy-Quest/GPT/**/*.py'
       - '.github/workflows/test-coverage.yml'
       - 'Eulogy-Quest/GPT/Holliday-quest/src/perl/**/*.py'
 
@@ -38,11 +40,12 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest \
+            --cov=Eulogy-Quest/GPT/base-story.py \
+            --cov=Eulogy-Quest/GPT/updateNPCs.py \
             --cov=website \
             --cov=Eulogy-Quest/GPT/Holliday-quest/src/perl \
-            --cov-report=term-missing \
             tests/
-
+            
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
