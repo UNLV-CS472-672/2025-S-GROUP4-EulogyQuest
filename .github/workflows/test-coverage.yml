@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'website/**/*.py'   # Consider updating to run with any file change
+      - 'website/**'
       - 'tests/**/*.py'
       - 'Eulogy-Quest/GPT/**/*.py'
       - '.github/workflows/test-coverage.yml'
@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [ master ]
     paths:
-      - 'website/**/*.py'
+      - 'website/**'
       - 'tests/**/*.py'
       - 'Eulogy-Quest/GPT/**/*.py'
       - '.github/workflows/test-coverage.yml'
