@@ -9,7 +9,7 @@ on:
 jobs:
   chart-and-comment:
     # if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
