@@ -1,0 +1,37 @@
+name: Generate & Post Activity Charts
+
+on:
+  pull_request:
+    # types: [closed]
+    types: [synchronize, opened]
+    branches: [master]
+
+jobs:
+  chart-and-comment:
+    # if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Install dependencies
+        run: |
+          pip install -r Eulogy-Quest/chart-scripts/github-action/requirements.txt
+
+      - name: Generate chart data
+        run: |
+          python Eulogy-Quest/chart-scripts/github-action/GithubUpdateData.py
+          python Eulogy-Quest/chart-scripts/github-action/GithubGenerateCharts.py
+
+      - name: Post charts as comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python Eulogy-Quest/chart-scripts/github-action/GithubPostChartsToPR.py
