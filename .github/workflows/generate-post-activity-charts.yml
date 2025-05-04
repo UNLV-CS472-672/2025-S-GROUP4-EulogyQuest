@@ -25,6 +25,8 @@ jobs:
           pip install -r Eulogy-Quest/chart-scripts/github-action/requirements.txt
 
       - name: Generate chart data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python Eulogy-Quest/chart-scripts/github-action/GithubUpdateData.py
           python Eulogy-Quest/chart-scripts/github-action/GithubGenerateCharts.py
