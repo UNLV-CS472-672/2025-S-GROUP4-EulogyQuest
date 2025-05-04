@@ -1,42 +1,39 @@
-## ai-gen start (ChatGPT-4o, 2)
-import os
+## ai-gen start (ChatGPT-4o, 1)
+
 from github import Github
-from github.PullRequest import PullRequest
+import os
 
-REPO = os.getenv("GITHUB_REPOSITORY")
-PR_NUMBER = os.getenv("PR_NUMBER")
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-
+token = os.getenv("GITHUB_TOKEN")
+repo_name = os.getenv("GITHUB_REPOSITORY")
+pr_number = int(os.getenv("PR_NUMBER"))
 run_id = os.getenv("RUN_ID")
-repo = os.getenv("GITHUB_REPOSITORY")
 server = os.getenv("GITHUB_SERVER_URL", "https://github.com")
 
-# Load images into markdown format
-def encode_image(path):
-    with open(path, "rb") as f:
-        import base64
-        b64 = base64.b64encode(f.read()).decode('utf-8')
-        return f"![chart]({{data:image/png;base64,{b64}}})"
-
-charts = [
-    encode_image("chart_1_weekly_prs.png"),
-    encode_image("chart_2_individual_contributions.png"),
-    encode_image("chart_3_files_changed.png"),
-    encode_image("chart_4_loc_changed.png"),
-]
-
-body = """
+body = f"""
 ### Activity Charts
 
-You can download activity charts at the link below:
-[Artifacts for this workflow run]({server}/{repo}/actions/runs/{run_id}/artifacts)
+You can download team activity charts at the link below:
+
+[Team Activity Charts]({server}/{repo_name}/actions/runs/{run_id}/artifacts)
 
 """
 
-# Post comment
-g = Github(GITHUB_TOKEN)
-repo = g.get_repo(REPO)
-pr = repo.get_pull(int(PR_NUMBER))
-pr.create_issue_comment(body)
+g = Github(token)
+repo = g.get_repo(repo_name)
+pr = repo.get_pull(pr_number)
+
+# Look for an existing bot comment that starts with the same heading
+existing_comment = None
+for comment in pr.get_issue_comments():
+    if comment.user.login == g.get_user().login and comment.body.startswith("### Activity Charts"):
+        existing_comment = comment
+        break
+
+if existing_comment:
+    existing_comment.edit(body)
+    print("Updated existing PR comment.")
+else:
+    pr.create_issue_comment(body)
+    print("Created new PR comment.")
 
 ## ai-gen end
