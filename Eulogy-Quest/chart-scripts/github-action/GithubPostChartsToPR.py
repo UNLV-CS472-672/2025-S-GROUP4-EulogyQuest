@@ -12,9 +12,9 @@ server = os.getenv("GITHUB_SERVER_URL", "https://github.com")
 body = f"""
 ### Activity Charts
 
-You can download team activity charts at the link below:
+You can download team activity charts at the link below under Artifacts:
 
-[Team Activity Charts]({server}/{repo_name}/actions/runs/{run_id}/artifacts)
+[Team Activity Charts]({server}/{repo_name}/actions/runs/{run_id})
 
 """
 
