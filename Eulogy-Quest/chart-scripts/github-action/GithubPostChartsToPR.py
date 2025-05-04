@@ -28,7 +28,7 @@ for comment in pr.get_issue_comments():
     print(f"Comment by {comment.user.login}: {comment.body[:40]!r}")
     if (
         comment.user.login == "github-actions[bot]" and
-        comment.body.startswith("### Activity Charts")
+        comment.body.lstrip().startswith("### Activity Charts")
     ):
         existing_comment = comment
         break
