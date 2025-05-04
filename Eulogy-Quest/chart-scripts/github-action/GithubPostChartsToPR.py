@@ -29,7 +29,7 @@ body = """
 ### Activity Charts
 
 You can download activity charts at the link below:
-👉 [Artifacts for this workflow run](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${{ github.run_id }})
+[Artifacts for this workflow run]({server}/{repo}/actions/runs/{run_id}/artifacts)
 
 """
 
