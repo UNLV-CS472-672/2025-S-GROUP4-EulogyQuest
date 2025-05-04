@@ -7,6 +7,10 @@ REPO = os.getenv("GITHUB_REPOSITORY")
 PR_NUMBER = os.getenv("PR_NUMBER")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
+run_id = os.getenv("RUN_ID")
+repo = os.getenv("GITHUB_REPOSITORY")
+server = os.getenv("GITHUB_SERVER_URL", "https://github.com")
+
 # Load images into markdown format
 def encode_image(path):
     with open(path, "rb") as f:
@@ -21,10 +25,13 @@ charts = [
     encode_image("chart_4_loc_changed.png"),
 ]
 
-body = "\n\n".join([
-    "##Contribution Charts",
-    *charts
-])
+body = """
+### Activity Charts
+
+You can download activity charts at the link below:
+👉 [Artifacts for this workflow run](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${{ github.run_id }})
+
+"""
 
 # Post comment
 g = Github(GITHUB_TOKEN)
