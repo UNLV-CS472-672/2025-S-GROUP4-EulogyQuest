@@ -25,7 +25,7 @@ pr = repo.get_pull(pr_number)
 # Look for an existing bot comment that starts with the same heading
 existing_comment = None
 for comment in pr.get_issue_comments():
-    if comment.user.login == g.get_user().login and comment.body.startswith("### Activity Charts"):
+    if comment.user.type == "Bot" and comment.user.login == "github-actions[bot]" and comment.body.startswith("### Activity Charts"):
         existing_comment = comment
         break
 
