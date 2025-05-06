@@ -9,6 +9,7 @@ function NavBar() {
             <Link to="/" >Home</Link>
             <Link to="/generate-quest" class = "active">Generate quest</Link>
             <Link to="/about">About</Link>
+            <Link to="/quests" style={{ marginLeft: '1rem' }}>Latest Quest</Link>
         </div>
     );
 }
