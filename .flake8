@@ -1,0 +1,6 @@
+[flake8]
+exclude =
+    website/client/node_modules,
+    .git,
+    __pycache__
+ignore = E302,E303
