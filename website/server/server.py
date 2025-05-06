@@ -6,6 +6,7 @@ import json
 import ftplib
 import io  # <-- you forgot this import in your earlier file
 
+# /* ai-gen start (ChatGPT-4, 2) */
 # Load environment variables
 load_dotenv()
 
@@ -45,6 +46,7 @@ def post_famous_person():
     filename = f"Eulogyquest_{underscored}.trigger"
     remote_dir = "tutorialb"
 
+    # --- build file content (could be anything you want, matching your system)
     file_content = f"Quest trigger for {famous_person}"
 
     try:
@@ -73,7 +75,6 @@ def post_famous_person():
     except Exception as e:
         print(f"[SERVER ERROR] {e}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
-    
 
 # Honored One Endpoint
 @app.route('/honored_one', methods=['POST'])
@@ -83,7 +84,7 @@ def post_honored_one():
     honored_one_logs = data.get('message_logs') if data else None
 
     if not honored_one or not honored_one.strip():
-        return jsonify({'error': 'Invalid request: "name" field is required and cannot be empty'}), 400
+        return jsonify({'error': 'Invalid request: "message_name" field is required and cannot be empty'}), 400
 
     save_data = {
         "honored_one": honored_one,
@@ -91,15 +92,33 @@ def post_honored_one():
     }
 
     try:
+        # Save to local file
         with open(OUTPUT_FILE_NAME, "w") as file:
             json.dump(save_data, file, indent=2)
 
-        return jsonify({'status': 'success', 'data': save_data}), 200
+        # Upload via FTP
+        remote_dir = "tutorialb"
+        remote_filename = f"Eulogyquest_{'_'.join(honored_one.split())}_honored.trigger"
+        
+        with open(OUTPUT_FILE_NAME, "rb") as file:
+            ftp = ftplib.FTP(FTP_SERVER)
+            ftp.login(user=FTP_USER, passwd=FTP_PASS)
+            ftp.cwd(remote_dir)
+            ftp.storbinary(f"STOR {remote_filename}", file)
+            ftp.quit()
+
+        return jsonify({'status': 'success', 'data': save_data, 'ftp_uploaded': f"{remote_dir}/{remote_filename}"}), 200
+
+    except ftplib.all_errors as e:
+        print(f"[FTP ERROR] {e}")
+        return jsonify({'error': f'FTP Upload failed: {str(e)}'}), 500
 
     except Exception as e:
         print(f"[SERVER ERROR] {e}")
         return jsonify({'error': f'Server error: {str(e)}'}), 500
 
 # Main entry point for local testing
+
 if __name__ == '__main__':
     app.run(debug=True)
+# ai-gen end (ChatGPT-4, 2)
