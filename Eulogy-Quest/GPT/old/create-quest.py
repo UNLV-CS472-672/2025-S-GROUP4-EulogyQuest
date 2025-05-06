@@ -1,19 +1,52 @@
 #!/usr/bin/env python3
 #
-# ai-gen start (Chat-GPT 4o-mini-high, ?)
-# ?= much re-prompting; final result copy/pasted
-#
 # create-quest.py
+# We'll do all the TODO items 
+# in a new file: `create-quest_v2.py`
 # ----------------
 # Master script to orchestrate the creation of a quest:
+#
+# All generated files should go to the build directory
+#  named after the quest.
+#  (can be a flat directory)
+# 
+#
+### [TODO] Quest Concept Generation rewrite update ###
+# (OLD, current) 
 # 1. Runs base-story.py
+#      produces:
+#        ghost_task.txt
+#        ghost_delivery_item.txt
+#        ghost_delivery_target.txt
+#        ghost_delivery_target_location.txt
+#
+# (NEW, get this done) 
+# 1. Runs: (1) ghost-prompt-raw.py
+#                produces: Ghost-dialog-First_Last.txt
+#       [TODO] update docs
+#       [ghost_task.txt is now ultimately Ghost-dialog-First_Last.txt]
+#                 from: ghost_dialog.txt
+#                 Gost-dialog-First_Last.txt
+#          (2) get-delivery-target.py
+#                produces: First_Last-delivery-target.txt
+#                note: NPC<#> will have the form "First_Last" also
+#          (3) get-delivery-item.py
+#                produces: First_Last-delivery-item.txt
+#                note: NPC<#> will have the form "First_Last" also
+#
+#       [TODO] click-text and items in EVENT_ITEM::
+###############################################
 # 2. Runs updateNPCs.py
 # 3. Runs perl-script-NPCs.py
+#
+# ai-gen start (Chat-GPT 4o-mini-high, ?)
+# ?= much re-prompting; final result copy/pasted
 #
 # Located at: GPT/create-quest.py
 # Usage: python3 create-quest.py <honored_target> [zone]
 #   honored_target: two-word name (e.g. "Pope Francis")
 #   zone: 'tutorialb' (default) or 'world-wide' (not yet implemented)
+#
 
 import sys
 import subprocess
