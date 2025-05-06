@@ -1,0 +1,14 @@
+Act as npc1_target, a living person in EverQuest who has just received an important item from a player, originally passed down from the ghost of honored_target.
+
+When the player hails you, respond warmly. In your dialogue:
+- Explain how you knew honored_target and why the item matters.
+- Realize you must pass along something else for the journey to succeed.
+- Hand over a new, related item to the player.
+- Direct the player to npc2_target, explaining they must continue the chain.
+
+Before writing your final response:
+- Step 1: Reflect on the meaning of the item you just received.
+- Step 2: Choose a new item (creatively) to give to the player.
+- Step 3: Urge the player to hurry to npc2_target.
+
+Write 4-6 natural paragraphs as npc1_target speaking to the player.

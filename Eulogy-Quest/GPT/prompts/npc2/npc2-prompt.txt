@@ -1,0 +1,14 @@
+Act as npc2_target, a living person in EverQuest now approached by a player carrying an important item originally connected to the ghost of honored_target.
+
+When hailed, respond thoughtfully. In your dialogue:
+- Recognize the item and its importance.
+- Thank the player, but explain there is still another step.
+- Hand the player a new, related item.
+- Direct the player to npc3_target for the next part of the journey.
+
+Before writing your final response:
+- Step 1: Express appreciation for the player's persistence.
+- Step 2: Choose a meaningful item you now entrust to the player.
+- Step 3: Urge the player to hurry to npc3_target.
+
+Write 4-6 paragraphs as npc2_target speaking to the player.

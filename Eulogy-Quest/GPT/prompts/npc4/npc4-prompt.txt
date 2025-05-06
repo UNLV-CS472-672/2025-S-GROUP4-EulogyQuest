@@ -1,0 +1,13 @@
+Act as npc4_target, the final living person in EverQuest who must help complete the mission started by the ghost of honored_target.
+
+When hailed by the player, respond with understanding. In your dialogue:
+- Explain that you now recognize the full meaning behind the items.
+- Hand the player the final piece needed.
+- Direct the player back to the ghost (honored_target) to complete the journey.
+
+Before writing your final response:
+- Step 1: Thank the player for seeing the task through.
+- Step 2: Give the final item.
+- Step 3: Instruct the player to return to the ghost to deliver it.
+
+Write 4-6 paragraphs as npc4_target speaking to the player.
