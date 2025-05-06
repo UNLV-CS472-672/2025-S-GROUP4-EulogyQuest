@@ -68,80 +68,56 @@ function HonoredOne() {
   };
 
   return (
-    <div>
-      <div style={backgroundStyle1} />
-      <div style={backgroundStyle2} />
-
-      <SubNavBar />
-
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "50vh",
-          textAlign: "center",
-          zIndex: 10,
-          top: "25vh",
-        }}
-      >
-        <h1 style={{ fontSize: "3.5rem", fontFamily: "Georgia, serif" }}>
-          Honored One
-        </h1>
-        <div style={{ marginTop: "30px" }} />
-        <p style={{ fontSize: "1.7rem", fontFamily: "Helvetica, Arial, sans-serif" }}>
-          PLEASE ENTER YOUR HONORED ONE’S NAME BELOW:
-        </p>
-        <div style={{ marginTop: "25px" }} />
-        <input
-          type="text"
-          placeholder="Name of Honored One"
-          value={name || ""}
-          onChange={(e) => setName(e.target.value)}
-          style={{ width: "500px", padding: "10px", fontSize: "24px", marginBottom: "20px" }}
-        />
-
-        <div
-        style={{
-            marginTop: "20px",
-            textAlign: "center",
-            width: "500px",
-            margin: "0 auto"
-        }}
-        >
-        <p style={{ fontSize: "0.9rem", color: "#555", marginBottom: "8px" }}>
-            Please upload a plain-text file (<code>.txt</code>)
-        </p>
-        <input
-            type="file"
-            accept=".txt"
-            onChange={(e) => {
-            if (e.target.files.length > 0) {
-                console.log("File selected:", e.target.files[0].name);
-                setFile(e.target.files[0]);
-            }
-            }}
-            style={{ display: "inline-block", padding: "12px 16px", fontSize: "1.1rem" }}
-        />
+        <div>
+            <div style={backgroundStyle1}>
+            </div>
+            <div style={backgroundStyle2}>
+            </div>
+                <SubNavBar />
+                <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "50vh", textAlign: "center", zIndex: 10, top: "25vh" }}>
+                    <h1 style={{ fontSize: "3.5rem", fontFamily: "Georgia, serif" }}>Honored One</h1>
+                    <div style = {{marginTop: "30px"}}></div>
+                        <p style={{ fontSize: "1.7rem", fontFamily: "Helvetica, Arial, sans-serif" }}>PLEASE ENTER YOU HONORED ONE'S NAME BELOW:</p> 
+                    <div style = {{marginTop: "25px"}}></div>
+                    <input
+                    
+                        type="text"
+                        placeholder="Name of Honored One"
+                        value={name || ""}
+                        onChange={(e) => setName(e.target.value)}
+                        style={{ width: "500px", padding: "10px", fontSize: "24px", marginBottom: "20px" }}
+                    />
+                    <div style={{ marginTop: "20px", }}>
+                        <input
+                        style={{ display: "block", marginLeft: "7vw", padding: "15px", fontSize: "28px", marginBottom: "20px" }}
+                            type="file"
+                            accept=".txt"
+                            onChange={(e) => {
+                                if (e.target.files.length > 0) {
+                                    console.log("File selected:", e.target.files[0].name);
+                                    setFile(e.target.files[0]);
+                                }
+                            }}
+                        />
+                    </div>
+                            {Ret === false ? (
+                            <p style={{ color: 'red' }}>{message}</p>
+                        ) : (
+                            message && <p style={{ color: 'limegreen' }}>{message}</p>
+                        )}
+                        <div style={{ marginTop: "20px"}}>
+                            <button 
+                                className= "quest-button"
+                                onClick={handleSubmit} 
+                            >
+                                Submit
+                            </button>
+                        </div>
+                </div>
+            
         </div>
-
-        {Ret === false ? (
-          <p style={{ color: "red" }}>{message}</p>
-        ) : (
-          message && <p style={{ color: "limegreen" }}>{message}</p>
-        )}
-
-        <div style={{ marginTop: "20px" }}>
-          <button className="quest-button" onClick={handleSubmit}>
-            Submit
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default HonoredOne;
-/* ai-gen end */
+/*  ai-gen end */

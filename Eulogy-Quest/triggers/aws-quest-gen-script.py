@@ -11,6 +11,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Upload an EverQuest quest trigger via FTP to your AWS game server."
     )
+    
     parser.add_argument(
         "name",
         help="Target name (e.g. \"Robin Williams\"). Use quotes if your shell needs them."
