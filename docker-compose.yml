@@ -1,13 +1,3 @@
-networks:
-  backend:
-    driver: ${NETWORKS_DRIVER}
-
-volumes:
-  build-cache:
-  spire-assets:
-  eqemu-var-log:
-  mariadb-var-log:
-
 services:
 
   #############################################
@@ -243,3 +233,59 @@ services:
     #      HOST_DIR: ${PWD}
     networks:
       - backend
+
+  #############################################
+  # EulogyQuest Website — Flask backend (dev)
+  #############################################
+  eulogy-backend:
+    build:
+      context: ./website/server
+      dockerfile: Dockerfile
+    env_file:
+      - ./website/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./website/server:/app
+      - build-cache:/root/.cache
+    networks:
+      - backend
+    environment:
+      - FLASK_RUN_PORT=8000
+    command: flask run --host=0.0.0.0 --port=$FLASK_RUN_PORT
+
+  #############################################
+  # EulogyQuest Website — React frontend (dev)
+  #############################################
+  eulogy-frontend:
+    # …
+    build:
+      context: ./website/client
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      # 1. Mount your source code
+      - ./website/client/src:/app/src
+      - ./website/client/public:/app/public
+      - ./website/client/package.json:/app/package.json
+      - ./website/client/package-lock.json:/app/package-lock.json
+      # 2. Preserve container’s node_modules
+      - /app/node_modules
+    networks:
+      - backend
+    command: npm start
+
+
+networks:
+  backend:
+    driver: ${NETWORKS_DRIVER}
+
+volumes:
+  build-cache:
+  spire-assets:
+  eqemu-var-log:
+  mariadb-var-log:
