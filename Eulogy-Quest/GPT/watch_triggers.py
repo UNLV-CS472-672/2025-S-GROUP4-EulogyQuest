@@ -27,7 +27,8 @@ QUEST_DIR      = AKK_STACK_ROOT / "server" / "quests"
 WATCH_DIR      = QUEST_DIR / "tutorialb"
 
 # create-quest.py lives next to this watcher
-QUEST_SCRIPT   = GPT_DIR / "create-quest.py"
+# QUEST_SCRIPT   = GPT_DIR / "create-quest.py"  #old#
+QUEST_SCRIPT   = GPT_DIR / "create-quest_v2.py"
 QUEUE_MAXSIZE  = 5
 COOLDOWN_SEC   = 20
 # ─────────────────────────
